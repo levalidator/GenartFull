@@ -14,7 +14,7 @@ public class DAOSupport {
 		
 		try 
 		{
-			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT * FROM support");
+			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT * FROM Support");
 			listSupports = new ArrayList<Support>();
 			
     		while (results.next())

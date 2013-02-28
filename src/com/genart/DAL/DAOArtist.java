@@ -15,8 +15,7 @@ public class DAOArtist
 		
 		String query = "SELECT * FROM Artist";
 		query += limit == 0 ? "" :  "LIMIT 0," + limit;
-		
-		try 
+		try
 		{
 			ResultSet results = AccesBDD.getStatement().executeQuery(query);
 			listArtists = new ArrayList<Artist>();
