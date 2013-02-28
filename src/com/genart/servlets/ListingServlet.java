@@ -38,7 +38,7 @@ public class ListingServlet extends HttpServlet {
 		List<Template> templates = DAOTemplate.GetListTemplates();
 		request.setAttribute("templates", templates);
 		
-		List<Artist> artistes = DAOArtist.getListArtist();
+		List<Artist> artistes = DAOArtist.getListArtist(0);
 		Map<Integer, Artist> mapArtistes = new HashMap<Integer, Artist>();
 		for (Artist artist : artistes) {
 			mapArtistes.put(artist.getId(), artist);
