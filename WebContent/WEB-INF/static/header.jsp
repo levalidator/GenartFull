@@ -43,7 +43,7 @@
                             <li class="active"><a href="./">Accueil</a></li>
                             <li class="dropdown"><a href="artist.php">Artistes</a></li>
                             <li><a href="./listing">Gallerie</a></li>
-                            <li><a href="contact.php">Contact</a></li>
+                            <li><a href="./contact">Contact</a></li>
                             <li class="divider-vertical"></li>
                             <li><a class="button green" href="cart.php">Mes oeuvres (5)</a></li>
                             <li class="divider-vertical"></li>
