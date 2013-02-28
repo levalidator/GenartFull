@@ -47,7 +47,7 @@
                             <li class="divider-vertical"></li>
                             <li><a class="button green" href="cart.php">Mes oeuvres (5)</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a class="button red" href="connexion.php">Connexion</a></li>
+                            <li><a class="button red" href="./connexion">Connexion</a></li>
                         </ul>
                     </section>
 
