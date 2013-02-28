@@ -1,5 +1,5 @@
 <div class="control-group">
-    <label for="val2">>Date de naissance (YYYYMMDD) : </label>
+    <label for="val2">Date de naissance (YYYYMMDD) : </label>
     <input type="text" id="inputtext" placeholder="Type something..." />
 </div>
 <div class="control-group">
