@@ -3,7 +3,7 @@
 <%@ include file="../static/header.jsp" %>
   <header class="header">
     <section class="container">
-      <h1>Gallerie categorie : lorem ipsum</h1>
+      <h1>Galerie categorie : lorem ipsum</h1>
     </section>
   </header>
 

@@ -39,7 +39,7 @@
                         <ul class="nav pull-right">
                             <li class="active"><a href="./">Accueil</a></li>
                             <li class="dropdown"><a href="artist.jsp">Artistes</a></li>
-                            <li><a href="./listing">Gallerie</a></li>
+                            <li><a href="./listing">Galerie</a></li>
                             <li><a href="./contact">Contact</a></li>
                             <li class="divider-vertical"></li>
                             <li><a class="button green" href="./cart">Mes oeuvres (5)</a></li>
