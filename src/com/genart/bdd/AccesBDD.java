@@ -14,7 +14,7 @@ public class AccesBDD
 		if(_connexion == null || _connexion.isClosed())
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			_connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/genart", "root", "admin");
+			_connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/genart", "root", "root");
 		}
 		return _connexion.createStatement();
 	}
