@@ -1,6 +1,6 @@
 @julius  :  'Julius Sans One', sans-serif;
 @green : #40b7a0;
-@red : #40b7a0;
+@red : #ec4343;
 @dark : #525252;
 
 * {
@@ -8,18 +8,25 @@
 	color:@dark;
 }
 
-h1 {
+h1,h2,h3 {
 	font-weight:normal;
-	font-family:@julius;
+}
+
+.loader {
+	position : absolute;
+	top:300px;
+}
+
+h1 {
+	
 	color:@dark;
-	font-size:30.5px;
+	font-size:25.5px;
 }
 
 h2 {
 	font-weight:normal;
-	font-family:@julius;
 	color:@dark;
-	font-size:22.5px;
+	font-size:20.5px;
 }
 
 .button {
@@ -28,29 +35,44 @@ h2 {
 	font-size:12px;
 	text-align:center;
 	padding:7px;
-	font-weight:normal !i
-	;
+	font-weight:normal !i;
+}
+
+
+.page-header {
+	border-color:#dbdbdb;
+	h1,h2,h3 {
+		background-image:url(../img/icon-puce.png);
+		background-repeat:no-repeat;
+		text-indent:55px;
+	}
 }
 
 .spacer {
 	width:85%;
 	margin:0 auto;
-	height:35px;
-	margin-bottom:15px;
+	height:20px;
+	margin-bottom:30px;
 	border-bottom:dashed 2px #dbdbdb;
 }
 
+label {
+	margin-right:7px;
+}
+
+
 .button:hover {
 	text-decoration:none;
-	background:@green !important;
+	background:@dark !important;
 }
 
-.button.green {
-	background: @green;
+.button.green, .button.green:hover, .button.green:active, .button.green:visited {
+	background: @green !important;
 }
 
-.button.red {
-	background: @red;
+
+.button.red, .button.red:hover, .button.red:active, .button.red:visited {
+	background: @red !important;
 }
 
 
@@ -63,11 +85,14 @@ h2 {
 }
 
 .article-thumb {
-	-moz-box-shadow: 1px 0px 4px @dark;
-	-webkit-box-shadow: 1px 0px 4px @dark;
-	box-shadow: 1px 0px 4px @dark;
-	filter: progid:DXImageTransform.Microsoft.Shadow(strength = 1, direction = 90, color = @dark);
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength = 1, Direction = 90, Color = @dark)";
+
+	cursor:pointer;
+	-moz-box-shadow: 0px 0px 9px #a0a0a0;
+	-webkit-box-shadow: 0px 0px 9px #a0a0a0;
+	box-shadow: 0px 0px 9px #a0a0a0;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	border:solid 1px #bababa;
+	background:#f3f3f3;
 	overflow:hidden;
 	position:relative;
 	padding-bottom:30px;
@@ -80,6 +105,28 @@ h2 {
 		height:160px;
 		img {
 			width:100%;
+		}
+		.pict-descr{
+			position: absolute;
+			z-index: 4;
+			background: #000;
+			width: 100%;
+			top: 0px;
+			height: 160px;
+			overflow: hidden;
+			display:none;
+			opacity:0;
+			h1,h2,h3,h4{
+				margin:50px 7px 7px 7px;
+				padding: 0 0 0 0;
+				color:#FFF;
+				text-align:center;
+			} 
+			p {
+				margin:0px 7px 0 7px;
+				text-align:center;
+				color:#FFF;
+			}
 		}
 	}
 	h3 {
@@ -124,8 +171,17 @@ h2 {
 	}
 }
 
+.divider-slice {
+	background: url(../img/bg-divider.jpg);
+	height: 5px;
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+}
+
 .header {	
-	background:#f3f3f3;
+	background:url(../img/satinweave.png);
+
 	margin-top:88px;
 	margin-bottom:30px;
 	border-bottom:solid 1px #bababa;
@@ -137,5 +193,8 @@ h2 {
 	color:#FFF;
 	padding:50px 0 50px 0;
 	margin-top:30px;
+	p {
+		text-align:center;
+	}
 }
 

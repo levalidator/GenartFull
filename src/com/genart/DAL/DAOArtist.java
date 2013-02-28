@@ -9,13 +9,16 @@ import com.genart.beans.Artist;
 
 public class DAOArtist
 {
-	public static List<Artist> getListArtist()
+	public static List<Artist> getListArtist(int limit)
 	{
 		List<Artist> listArtists = null;
 		
+		String query = "SELECT * FROM Artist";
+		query += limit == 0 ? "" :  "LIMIT 0," + limit;
+		
 		try 
-		{	
-			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT * FROM Artist LIMIT 0,5");
+		{
+			ResultSet results = AccesBDD.getStatement().executeQuery(query);
 			listArtists = new ArrayList<Artist>();
 			
     		while (results.next())
@@ -39,5 +42,32 @@ public class DAOArtist
     		System.out.println(e.getMessage());
     	}
 		return listArtists;
+	}
+	
+	public static Artist GetArtistFromTemplate(int idTemplate)
+	{
+		Artist artist = null;
+		
+		try 
+		{	
+			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT Artist.* FROM Artist INNER JOIN Template ON Template.idTemplate = " + idTemplate);
+			results.first();
+
+		 	 artist = new Artist(
+		 			Integer.parseInt(results.getString("IdArtist")), 
+		 			results.getString("mailArtist"), 
+		 			results.getString("passwordArtist"), 
+		 			results.getString("phoneArtist"), 
+		 			results.getString("websiteArtist"), 
+		 			results.getString("nameArtist"), 
+		 			results.getString("firstNameArtist"), 
+		 			results.getString("descriptionArtist"), 
+		 			results.getString("pathAvatarArtist"));
+    	}
+		catch (Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
+		return artist;
 	}
 }
