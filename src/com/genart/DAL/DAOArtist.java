@@ -69,4 +69,24 @@ public class DAOArtist
     	}
 		return artist;
 	}
+	
+	public static boolean InsertArtist(Artist artist){
+		try{
+			String query = "INSERT INTO Artist (mailArtist, passwordArtist, phoneArtist, websiteArtist, nameArtist, firstNameArtist, descriptionArtist, pathAvatarArtist) " +
+					"VALUES ('"+artist.getMail()
+					+"', '"+artist.getPassword()
+					+"', '"+artist.getPhone()
+					+"', '"+artist.getWebSite()
+					+"', '"+artist.getName()
+					+"', '"+artist.getFirstName()
+					+"', '"+artist.getDescription()
+					+"', '"+artist.getPathAvatar()+"')";
+			
+			AccesBDD.getStatement().execute(query);			
+			return true;
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
 }

@@ -27,30 +27,26 @@
         <nav class="navbar navbar-fixed-top">
             <section class="navbar-inner">
                 <section class="container">
-
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                     <section class="logo span2">
                         <a href="./"><img src="img/logo.png" alt=""/></a>
                     </section>
-
                     <section class="nav-collapse span9 collapse">
                         <ul class="nav pull-right">
                             <li class="active"><a href="./">Accueil</a></li>
-                            <li class="dropdown"><a href="artist.php">Artistes</a></li>
+                            <li class="dropdown"><a href="artist.jsp">Artistes</a></li>
                             <li><a href="./listing">Gallerie</a></li>
                             <li><a href="./contact">Contact</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a class="button green" href="cart.php">Mes oeuvres (5)</a></li>
+                            <li><a class="button green" href="./cart">Mes oeuvres (5)</a></li>
                             <li class="divider-vertical"></li>
                             <li><a class="button red" href="./connexion">Connexion</a></li>
                         </ul>
                     </section>
-
                 </section>
             </section>
         <div class="divider-slice"></div>
