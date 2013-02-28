@@ -42,7 +42,7 @@
                     <div class="span2"><div class="span1">Total :</div> <span class="badge"><c:out value="${ template.getMontant() + requestScope['supports'][idSupport].getMontant() }" />€</span></div>
                 </td>
                 <td class="span3">
-                    <a class="button green" href="detail.php">Voir</a>
+                    <a class="button green" href="details?id=${ template.getId() }">Voir</a>
                     <a class="button red" href="">Supprimer</a>
                 </td>
             </tr>
