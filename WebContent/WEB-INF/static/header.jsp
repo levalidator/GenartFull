@@ -38,7 +38,7 @@
                     <section class="nav-collapse span9 collapse">
                         <ul class="nav pull-right">
                             <li class="active"><a href="./">Accueil</a></li>
-                            <li class="dropdown"><a href="artist.php">Artistes</a></li>
+                            <li class="dropdown"><a href="artist.jsp">Artistes</a></li>
                             <li><a href="./listing">Gallerie</a></li>
                             <li><a href="./contact">Contact</a></li>
                             <li class="divider-vertical"></li>
