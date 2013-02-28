@@ -71,14 +71,52 @@ public class DAOTemplate
 		
 		return lesTemplates;		
 	}
-	
-	public static List<Template> getTopTemplates()
+
+	public static List<Template> getTopTemplates(int limit)
 	{
 		List<Template> topTemplates = null;
 		
+		String query = "SELECT * FROM Template";
+		query += limit == 0 ? "" : " LIMIT 0," + limit;
+		
 		try
 		{
-			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT * FROM Template LIMIT 0,3");
+			ResultSet results = AccesBDD.getStatement().executeQuery(query);
+			topTemplates = new ArrayList<Template>();
+			
+    		while (results.next())
+    		{
+				Template template = new Template(
+						results.getInt("idTemplate"),
+						results.getString("nameSketch"),
+						results.getString("dateSketch"),
+						results.getString("descriptionSketch"),
+						results.getInt("IdArtist"),
+						results.getInt("montant"),
+						results.getString("created_at"),
+						results.getString("imageTemplate"));
+				
+    			topTemplates.add(template);
+    		}
+    	}
+		catch (Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
+		
+		return topTemplates;
+	}
+	
+	public static List<Template> getTopTemplates(int idArtist, int limit)
+	{
+		List<Template> topTemplates = null;
+		
+		String query = "SELECT Template.* FROM Template INNER JOIN Artist ON Artist.IdArtist = " + idArtist;
+		query += limit == 0 ? "" : " LIMIT 0," + limit;
+		
+		try
+		{
+			ResultSet results = AccesBDD.getStatement().executeQuery(query);
 			topTemplates = new ArrayList<Template>();
 			
     		while (results.next())

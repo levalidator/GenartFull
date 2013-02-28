@@ -1,13 +1,19 @@
 package com.genart.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.genart.DAL.DAOArtist;
+import com.genart.DAL.DAOSupport;
 import com.genart.DAL.DAOTemplate;
+import com.genart.beans.Artist;
+import com.genart.beans.Support;
 import com.genart.beans.Template;
 
 /**
@@ -31,9 +37,16 @@ public class DetailsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		int idTemplate = Integer.parseInt(request.getParameter("id"));
-		Template template = DAOTemplate.GetTemplateById(idTemplate);
 		
+		Template template = DAOTemplate.GetTemplateById(idTemplate);
+		Artist artist = DAOArtist.GetArtistFromTemplate(idTemplate);
+		List<Template> templates = DAOTemplate.getTopTemplates(artist.getId(), 3);
+		List<Support> supports = DAOSupport.GetListSupport();
+
 		request.setAttribute("template", template);
+		request.setAttribute("templates", templates);
+		request.setAttribute("supports", supports);
+		request.setAttribute("artist", artist);
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/detail.jsp").forward(request, response);
 	}
