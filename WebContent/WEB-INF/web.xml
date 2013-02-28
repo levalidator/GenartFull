@@ -2,30 +2,34 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 	<error-page>
 		<error-code>404</error-code>
-		<location>/404.html</location>
+		<location>/WEB-INF/static/404.jsp</location>
 	</error-page>
-  <servlet>
-    <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>com.genart.servlets.IndexServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ListingServlet</servlet-name>
-    <servlet-class>com.genart.servlets.ListingServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>DetailsServlet</servlet-name>
-    <servlet-class>com.genart.servlets.DetailsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/IndexServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ListingServlet</servlet-name>
-    <url-pattern>/ListingServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DetailsServlet</servlet-name>
-    <url-pattern>/DetailsServlet</url-pattern>
-  </servlet-mapping>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/static/500.jsp</location>
+	</error-page>
+	<servlet>
+		<servlet-name>IndexServlet</servlet-name>
+		<servlet-class>com.genart.servlets.IndexServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListingServlet</servlet-name>
+		<servlet-class>com.genart.servlets.ListingServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DetailsServlet</servlet-name>
+		<servlet-class>com.genart.servlets.DetailsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IndexServlet</servlet-name>
+		<url-pattern>/IndexServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListingServlet</servlet-name>
+		<url-pattern>/ListingServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DetailsServlet</servlet-name>
+		<url-pattern>/DetailsServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
