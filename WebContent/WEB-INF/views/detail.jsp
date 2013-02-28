@@ -31,8 +31,8 @@
 				               <figure>
 				                   <img src="img/products/${ support.getName() }.jpg"/>
 				               </figure>
-				               <span data-value="15" class="badge">
-				                   15€
+				               <span data-value="${ support.getMontant() }" class="badge">
+				                   <c:out value="${ support.getMontant() }" />€
 				               </span>
 				           </li>
 						</c:forEach>
@@ -40,9 +40,9 @@
                 </div>
             </div>
 
-            <div class="span1">Oeuvre : <span id="badge-price-oeuvre" data-price-oeuvre="15" class="badge">15€</span></div>
-            <div class="span1">Support : <span id="badge-price-support" class="badge">15€</span></div>
-            <div class="span1">Total : <span id="badge-price-total" class="badge">30€</span></div>
+            <div class="span1">Oeuvre : <span id="badge-price-oeuvre" data-price-oeuvre="${ support.getMontant() }" class="badge"><c:out value="${ template.getMontant() }" />€</span></div>
+            <div class="span1">Support : <span id="badge-price-support" class="badge">0€</span></div>
+            <div class="span1">Total : <span id="badge-price-total" class="badge">0€</span></div>
             <a id="add-oeuvre" class="button red" name="Add">Ajouter à mes oeuvres</a> 
         </div>
         <div class="span4">
