@@ -28,6 +28,10 @@
     <servlet-name>ConnexionServlet</servlet-name>
     <servlet-class>com.genart.servlets.ConnexionServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>com.genart.servlets.CartServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/IndexServlet</url-pattern>
@@ -47,5 +51,9 @@
   <servlet-mapping>
     <servlet-name>ConnexionServlet</servlet-name>
     <url-pattern>/ConnexionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
   </servlet-mapping>
 </web-app>
