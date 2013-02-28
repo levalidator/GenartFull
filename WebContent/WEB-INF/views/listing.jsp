@@ -32,7 +32,7 @@
 		          <section class="pict-descr">
 		          	<c:set var="idArtist" value="${template.getIdArtist() }"/>
 		            <h4>Auteur : <c:out value="${requestScope['artistes'][idArtist].getFullName() }"/></h4>
-              	  	<p><a href=<c:out value="${requestScope['artistes'][idArtist].getWebSite() }"/>><c:out value="${requestScope['artistes'][idArtist].getWebSite() }"/></a></p>
+              	  	<p><a href="<c:out value="${requestScope['artistes'][idArtist].getWebSite() }"/>"><c:out value="${requestScope['artistes'][idArtist].getWebSite() }"/></a></p>
 		          </section>
 		        </figure>
 		        <h3><c:out value="${ template.getName() }" /></h3>
