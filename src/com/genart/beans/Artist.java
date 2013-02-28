@@ -33,6 +33,7 @@ public class Artist
 	public String getPhone() {return _phone;}
 	public String getWebSite() {return _webSite;}
 	public String getName() {return _name;}
+	public String getFullName() {return _firstName + " " + _name;}
 	public String getDescription() {return _description;}
 	public String getFirstName() {return _firstName;}
 	public String getPathAvatar() {return _pathAvatar;}
