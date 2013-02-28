@@ -29,7 +29,7 @@
 				           <li class="divider"></li>
 				           <li>
 				               <figure>
-				                   <img src="img/products/${ support.getName() }.jpg"/>
+				                   <img src="img/products/product-${ support.getId() }.jpg"/>
 				               </figure>
 				               <span data-value="${ support.getMontant() }" class="badge">
 				                   <c:out value="${ support.getMontant() }" />€
