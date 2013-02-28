@@ -46,7 +46,7 @@
 			</ul>
 			<section class="tab-content">
 				
-				<form name="form-artist" class="form-horizontal tab-pane fade" id="artist">
+				<form name="form-artist" class="form-horizontal tab-pane fade" id="artist" method="post" action="./connexion">
 					<div id="nameArtist-control-group" class="control-group">
 						<label for="nameArtist" class="control-label">Nom  * : </label>
 						<div class="controls">
@@ -96,6 +96,8 @@
 							<span class="help-inline" style="display:none;" id="websiteArtist-message">  </span>
 						</div>
 					</div>
+					<input type="hidden" value="insert" name="mode"/>
+					<input type="hidden" value="artist" name="object"/>
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 
