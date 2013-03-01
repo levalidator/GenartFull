@@ -40,7 +40,7 @@ public class DetailsServlet extends HttpServlet {
 		
 		Template template = DAOTemplate.GetTemplateById(idTemplate);
 		Artist artist = DAOArtist.GetArtistFromTemplate(idTemplate);
-		List<Template> templates = DAOTemplate.getTopTemplates(artist.getId(), 3);
+		List<Template> templates = DAOTemplate.getTopTemplates(template.getIdArtist(), 3);
 		List<Support> supports = DAOSupport.GetListSupport();
 
 		request.setAttribute("template", template);

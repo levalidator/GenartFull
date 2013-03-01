@@ -111,7 +111,7 @@ public class DAOTemplate
 	{
 		List<Template> topTemplates = null;
 		
-		String query = "SELECT Template.* FROM Template INNER JOIN Artist ON Artist.IdArtist = " + idArtist;
+		String query = "SELECT Template.* FROM Template LEFT JOIN Artist ON Artist.IdArtist = Template.idArtist WHERE Template.IdArtist = " + idArtist;
 		query += limit == 0 ? "" : " LIMIT 0," + limit;
 		
 		try
