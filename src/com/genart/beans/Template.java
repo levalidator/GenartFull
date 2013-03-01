@@ -14,10 +14,11 @@ public class Template
 	private float _montant;
 	private Date _created_at;
 	private String _image;
+	private String _pdePath;
 
 	public Template(){}
 	
-	public Template(int id, String name, String date, String description, int idArtist, float montant, String createdAt, String image)
+	public Template(int id, String name, String date, String description, int idArtist, float montant, String createdAt, String image, String pdePath)
 	{
 		this._id = id;
 		this._name = name;
@@ -27,6 +28,7 @@ public class Template
 		this._montant = montant;
 		this._created_at = DateExtension.toDate(createdAt);
 		this._image = image;
+		this.setPdePath(pdePath);
 	}
 	
 	public Template(int id, String name, Date date, String description, int idArtist, float montant, Date createdAt, String image)
@@ -60,4 +62,19 @@ public class Template
 	public void setCreatedAt(Date createdat) { this._created_at = createdat; }
 	public void setCreatedAtString(String createdat) { this._created_at = DateExtension.toDate(createdat); }
 	public void setImage(String image) { this._image = image; }
+
+	public String getPdePath() {
+		return _pdePath;
+	}
+
+	public void setPdePath(String _pdePath) {
+		this._pdePath = _pdePath;
+	}
+	
+	public String getFormPath(){
+      String chaine = "../forms/form_newyork-";
+      chaine += this.getId();
+      chaine += ".jsp";
+      return chaine;
+	}
 }
