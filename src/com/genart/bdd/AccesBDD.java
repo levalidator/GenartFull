@@ -15,11 +15,8 @@ public class AccesBDD
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			//_connexion = DriverManager.getConnection("jdbc:mysql://prozonline.no-ip.org/genart", "genart", "Jeq7gjk");
-<<<<<<< HEAD
 			_connexion = DriverManager.getConnection("jdbc:mysql://10.50.125.55/genart", "root", "unzziped");
-=======
-			_connexion = DriverManager.getConnection("jdbc:mysql://localhost/genart", "root", "unzziped");
->>>>>>> bd0fe55014509d25709751ab9cc1c0d40c643ab1
+//			_connexion = DriverManager.getConnection("jdbc:mysql://localhost/genart", "root", "unzziped");
 		}
 		return _connexion.createStatement();
 	}
