@@ -41,7 +41,7 @@
 	          <img src="${template.getImage()}"/>
 	          <section class="pict-descr">
 	            <h4>Titre : ${template.getName()}</h4>
-	            <p>Auteur : ${artist.getFirstName()}</p>
+	            <p>Auteur : ${artist.getFullName()}</p>
           	  </section>
 	        </figure>
 	        <h3>${template.getName()}</h3>
