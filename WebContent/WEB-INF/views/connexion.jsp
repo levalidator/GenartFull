@@ -13,7 +13,7 @@
 				<h2>Déjà membre</h2>
 			</section>
 
-			<form name="authentification" class="form-horizontal">
+			<form name="authentification" class="form-horizontal" method="post" action="./connexion">
 				<div id="login-control-group" class="control-group">
 					<label for="login" class="control-label">Identifiant : </label>
 					<div class="controls">
@@ -28,6 +28,8 @@
 						<span class="help-inline" style="display:none;" id="password-message"> Ce champ est obligatoire. </span>
 					</div>
 				</div>
+				<input type="hidden" value="connect" name="mode"/>
+				<input type="hidden" value="both" name="object"/>
 				<input type="submit" class="button red noborder pull-right" value="Connexion"/>
 			</form>
 				
