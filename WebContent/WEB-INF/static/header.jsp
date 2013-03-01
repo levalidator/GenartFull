@@ -44,7 +44,14 @@
                             <li class="divider-vertical"></li>
                             <li><a class="button green" href="./cart">Mes oeuvres (5)</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a class="button red" href="./connexion">Connexion</a></li>
+                            <c:choose>
+								<c:when test="${connected}">
+									<li><a class="button red" href="./deconnexion">Déconnexion</a></li>	
+								</c:when>
+								<c:otherwise>
+									<li><a class="button red" href="./connexion">Connexion</a></li>
+								</c:otherwise>
+							</c:choose>
                         </ul>
                     </section>
                 </section>
