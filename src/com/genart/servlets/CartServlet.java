@@ -36,16 +36,27 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		List<Template> templates = DAOTemplate.GetListTemplates();
-		Map<Integer, Support> supports = new HashMap<Integer, Support>();
-
-		for(Support support : DAOSupport.GetListSupport())
+		Object add = request.getAttribute("add");
+		
+		if(add != null)
 		{
-			supports.put(support.getId(), support);
+			int idTemplate = Integer.parseInt(request.getAttribute("id").toString());
+			int idSupport = Integer.parseInt(request.getAttribute("support").toString());
+			
 		}
-
-		request.setAttribute("templates", templates);
-		request.setAttribute("supports", supports);
+		else
+		{		
+			List<Template> templates = DAOTemplate.GetListTemplates();
+			Map<Integer, Support> supports = new HashMap<Integer, Support>();
+	
+			for(Support support : DAOSupport.GetListSupport())
+			{
+				supports.put(support.getId(), support);
+			}
+	
+			request.setAttribute("templates", templates);
+			request.setAttribute("supports", supports);
+		}
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(request, response);
 	}
@@ -53,7 +64,8 @@ public class CartServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		// TODO Auto-generated method stub
 	}
 

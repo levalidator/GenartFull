@@ -43,7 +43,10 @@
             <div class="span1">Oeuvre : <span id="badge-price-oeuvre" data-price-oeuvre="${ support.getMontant() }" class="badge"><c:out value="${ template.getMontant() }" />€</span></div>
             <div class="span1">Support : <span id="badge-price-support" class="badge">0€</span></div>
             <div class="span1">Total : <span id="badge-price-total" class="badge">0€</span></div>
-            <a id="add-oeuvre" class="button red" name="Add">Ajouter à mes oeuvres</a> 
+            <form method="post">
+           	 	<input type="hidden" name="idSupport" value="">
+           	 	<button id="add-oeuvre" class="button red" name="Add" href="">Ajouter à mes oeuvres</button>
+            </form> 
         </div>
         <div class="span4">
             <div class="myform">
