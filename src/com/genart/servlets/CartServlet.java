@@ -68,10 +68,14 @@ public class CartServlet extends HttpServlet {
 	 	Object idsupport = request.getParameter("idSupport");
 		
 		int idSupport = 0;
-		
-		if(idsupport != null)
+
+		try
 		{
 			idSupport = Integer.parseInt(request.getParameter("idSupport").toString());
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
 		}
 		
 		int numSkecth = 0;
