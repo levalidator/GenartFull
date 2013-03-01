@@ -49,7 +49,7 @@ public class DAOArtist
 		
 		try 
 		{	
-			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT Artist.* FROM Artist INNER JOIN Template ON Template.idTemplate = " + idTemplate);
+			ResultSet results = AccesBDD.getStatement().executeQuery("SELECT Artist.* FROM Artist LEFT JOIN Template ON Template.IdArtist = Artist.IdArtist WHERE Template.IdTemplate = " + idTemplate);
 			results.first();
 
 		 	 artist = new Artist(
