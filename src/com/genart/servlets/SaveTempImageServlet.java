@@ -44,12 +44,29 @@ public class SaveTempImageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{        
-		BASE64Decoder decoder = new BASE64Decoder();  
-	    byte[] imgBytes = decoder.decodeBuffer(request.getAttribute("image").toString());          
+		BASE64Decoder decoder = new BASE64Decoder(); 
+		
+		String param = request.getParameter("image").toString().split(",")[1];
+		
+	    byte[] imgBytes = decoder.decodeBuffer(param);          
 	    
-	    BufferedImage bufImg = ImageIO.read(new ByteArrayInputStream(imgBytes));  
-	    File imgOutFile = new File("/img/temp/" + request.getSession().getId() + ".jpg");  
+	    ByteArrayInputStream stream = new ByteArrayInputStream(imgBytes);
+	    
+	    BufferedImage bufImg = ImageIO.read(stream);  
+	    
+	    String sessionId = request.getSession().getId();
+
+		int numSkecth = 0;
+		Object num = request.getSession().getAttribute("numSkecth");
+		if(num != null)
+		{
+			numSkecth = Integer.parseInt(num.toString()); 
+		}
+		request.getSession().setAttribute("numSkecth", numSkecth);
+		
+	    //File imgOutFile = new File("C:\\Eclipse\\workspace\\GenArt\\WebContent\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+	    File imgOutFile = new File("C:\\Eclipse\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\GenArt\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+	    
 		ImageIO.write(bufImg, "jpg", imgOutFile); 
 	}
-
 }

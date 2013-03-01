@@ -1,6 +1,7 @@
 package com.genart.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.genart.DAL.DAOSupport;
 import com.genart.DAL.DAOTemplate;
+import com.genart.beans.Sketch;
 import com.genart.beans.Support;
 import com.genart.beans.Template;
 
@@ -36,27 +38,22 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		Object add = request.getAttribute("add");
-		
-		if(add != null)
+		List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
+		Map<Integer, Support> supports = new HashMap<Integer, Support>();
+		Map<Integer, Template> templates = new HashMap<Integer, Template>();
+
+		for(Support support : DAOSupport.GetListSupport())
 		{
-			int idTemplate = Integer.parseInt(request.getAttribute("id").toString());
-			int idSupport = Integer.parseInt(request.getAttribute("support").toString());
-			
+			supports.put(support.getId(), support);
 		}
-		else
-		{		
-			List<Template> templates = DAOTemplate.GetListTemplates();
-			Map<Integer, Support> supports = new HashMap<Integer, Support>();
-	
-			for(Support support : DAOSupport.GetListSupport())
-			{
-				supports.put(support.getId(), support);
-			}
-	
-			request.setAttribute("templates", templates);
-			request.setAttribute("supports", supports);
+		for(Template template : DAOTemplate.GetListTemplates())
+		{
+			templates.put(template.getId(), template);
 		}
+
+		request.setAttribute("templates", templates);
+		request.setAttribute("supports", supports);
+		request.setAttribute("sketchs", sketchs);
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(request, response);
 	}
@@ -66,7 +63,34 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
+		int idTemplate = Integer.parseInt(request.getParameter("idTemplate").toString());
+		
+	 	Object idsupport = request.getParameter("idSupport");
+		
+		int idSupport = 0;
+		
+		if(idsupport != null)
+		{
+			idSupport = Integer.parseInt(request.getParameter("idSupport").toString());
+		}
+		
+		int numSkecth = 0;
+		Object num = request.getSession().getAttribute("numSkecth");
+		if(num != null)
+		{
+			numSkecth = Integer.parseInt(num.toString()); 
+		}
+		
+		List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
+		if(sketchs == null)
+		{
+			sketchs = new ArrayList<Sketch>();
+		}
+		sketchs.add(new Sketch(idSupport, idTemplate, "img/temp/" + request.getSession().getId() + "_" + numSkecth + ".jpg"));
+		++numSkecth;
+		request.getSession().setAttribute("numSkecth", numSkecth);
+		request.getSession().setAttribute("sketchs", sketchs);
+		
+		response.sendRedirect("./cart");
 	}
-
 }
