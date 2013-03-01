@@ -1,6 +1,9 @@
 package com.genart.servlets;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.genart.DAL.DAOArtist;
+import com.genart.DAL.DAOCustomer;
 import com.genart.bdd.AccesBDD;
 import com.genart.beans.Artist;
+import com.genart.beans.Customer;
 
 @SuppressWarnings("serial")
 @WebServlet("/connexion")
@@ -38,9 +43,38 @@ public class ConnexionServlet extends HttpServlet {
     			String phone = request.getParameter("phoneArtist");
     			String website = request.getParameter("websiteArtist");
 
-    			Artist art = new Artist(1, mail, passw, phone, website, name, fname, "", "img/artist.jpg");
-    			boolean test = DAOArtist.InsertArtist(art);
-    			System.out.println(test);
+    			MessageDigest encryptedPass;
+				try {
+					encryptedPass = MessageDigest.getInstance("MD5");
+				} catch (NoSuchAlgorithmException e) {
+					encryptedPass = null;
+					e.printStackTrace();
+				} 
+				
+    			encryptedPass.update(passw.getBytes(), 0, passw.length());
+    			String md5 = new BigInteger(1, encryptedPass.digest()).toString(16);
+    			
+    			Artist art = new Artist(1, mail, md5, phone, website, name, fname, "", "img/artist.jpg");
+    			DAOArtist.InsertArtist(art);
+    		}
+    		
+    		if (object.equals("customer")){
+    			String mail = request.getParameter("mailCustomer");
+    			String passw = request.getParameter("passwordCustomer");
+    			
+    			MessageDigest encryptedPass;
+				try {
+					encryptedPass = MessageDigest.getInstance("MD5");
+				} catch (NoSuchAlgorithmException e) {
+					encryptedPass = null;
+					e.printStackTrace();
+				} 
+				
+    			encryptedPass.update(passw.getBytes(), 0, passw.length());
+    			String md5 = new BigInteger(1, encryptedPass.digest()).toString(16);
+    			
+    			Customer custo = new Customer(1, mail, md5);
+    			DAOCustomer.InsertCustomer(custo);
     		}
     	}
     	
