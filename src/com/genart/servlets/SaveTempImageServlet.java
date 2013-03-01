@@ -2,6 +2,7 @@ package com.genart.servlets;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -14,10 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sun.misc.BASE64Decoder;
+
 /**
  * Servlet implementation class SessionServlet
  */
-@WebServlet("/SessionServlet")
+@WebServlet("/saveimgtemp")
 public class SaveTempImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,10 +43,13 @@ public class SaveTempImageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		URL url = new URL("http://www.mkyong.com/image/mypic.jpg");
-		BufferedImage image = ImageIO.read(url);
-		ImageIO.write(image, "jpg", new File("/img/temp/" + request.getSession().getId() + ".jpg"));
+	{        
+		BASE64Decoder decoder = new BASE64Decoder();  
+	    byte[] imgBytes = decoder.decodeBuffer(request.getAttribute("image").toString());          
+	    
+	    BufferedImage bufImg = ImageIO.read(new ByteArrayInputStream(imgBytes));  
+	    File imgOutFile = new File("/img/temp/" + request.getSession().getId() + ".jpg");  
+		ImageIO.write(bufImg, "jpg", imgOutFile); 
 	}
 
 }
