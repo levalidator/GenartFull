@@ -2,7 +2,10 @@
 <%@ include file="../static/header.jsp" %>
 <header class="header">
     <section class="container">
-        <h1>Erreur 404 !</h1>
+        <h1>Oooh no !</h1>
+        <div class="text-center">
+        	<img src="/GenArt/img/404.png" alt=""/>
+        </div>
     </section>
 </header>
  

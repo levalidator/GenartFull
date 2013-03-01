@@ -16,7 +16,7 @@
 
         <div class="span8" id="app-span">
             <canvas id="newyork" data-processing-sources="pde/newyork.pde"></canvas>
-
+			<img src="" id="example" style="display:none;">
             <div class="span3">
                 <div class="btn-group">
                     <button class="btn btn-large">Selectionner un support</button>
@@ -27,7 +27,7 @@
                         <li>Aucun</li>
 				    	<c:forEach items="${ requestScope['supports'] }" var="support">
 				           <li class="divider"></li>
-				           <li>
+				           <li data-item-id="${ support.getId() }">
 				               <figure>
 				                   <img src="img/products/product-${ support.getId() }.jpg"/>
 				               </figure>
@@ -40,13 +40,14 @@
                 </div>
             </div>
 
-            <div class="span1">Oeuvre : <span id="badge-price-oeuvre" data-price-oeuvre="${ support.getMontant() }" class="badge"><c:out value="${ template.getMontant() }" />€</span></div>
+            <div class="span1">Oeuvre : <span id="badge-price-oeuvre" data-price-oeuvre="${ template.getMontant() }" class="badge"><c:out value="${ template.getMontant() }" />€</span></div>
             <div class="span1">Support : <span id="badge-price-support" class="badge">0€</span></div>
-            <div class="span1">Total : <span id="badge-price-total" class="badge">0€</span></div>
-            <form method="post">
-           	 	<input type="hidden" name="idSupport" value="">
-           	 	<button id="add-oeuvre" class="button red" name="Add" href="">Ajouter à mes oeuvres</button>
-            </form> 
+            <div class="span1">Total : <span id="badge-price-total" class="badge"><c:out value="${ template.getMontant() }" />€</span></div>
+            <form action="" method="post">
+				<input type="hidden" name="idTemplate" id="idTemplate" value="${ template.getId() }">
+				<input type="hidden" name="idSupport" id="idSupport" value="${ support.getId() }">
+	            <button id="add-oeuvre" class="button red noborder" name="Add">Ajouter à mes oeuvres</button> 
+			</form>
         </div>
         <div class="span4">
             <div class="myform">
