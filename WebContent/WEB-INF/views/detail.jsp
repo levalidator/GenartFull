@@ -15,7 +15,7 @@
         </div>
 
         <div class="span8" id="app-span">
-            <canvas id="newyork" data-processing-sources="${ template.getPdePath() }"></canvas>
+            <canvas id="${template.getNamePde() }" data-processing-sources="${ template.getPdePath() }"></canvas>
 			<img src="" id="example" style="display:none;">
             <div class="span3">
                 <div class="btn-group">
@@ -52,20 +52,18 @@
         <div class="span4">
             <div class="myform">
                 <form id="form-art">
-                <c:choose>
-                	<c:when test="${template.getId().equals(1)})">
-	                	<%@ include file="../forms/form_newyork-1.jsp" %>
-                	</c:when>
-                	<c:when test="${template.getId().equals(2)})">
-	                	<%@ include file="../forms/form_newyork-2.jsp" %>
-                	</c:when>
-                	<c:when test="${template.getId().equals(3)})">
-	                	<%@ include file="../forms/form_newyork-3.jsp" %>
-                	</c:when>
-                	<c:when test="${template.getId().equals(4)})">
-	                	<%@ include file="../forms/form_newyork-4.jsp" %>
-                	</c:when>
-                </c:choose>
+                <c:if test="${template.getId() == 1}">
+                	<%@ include file="../forms/form_newyork-1.jsp" %>
+                </c:if>
+                <c:if test="${template.getId() == 2}">
+	                <%@ include file="../forms/form_newyork-2.jsp" %>
+                </c:if>
+                <c:if test="${template.getId() == 3}">
+	                <%@ include file="../forms/form_newyork-3.jsp" %>
+                </c:if>
+                <c:if test="${template.getId() == 4}">
+	                <%@ include file="../forms/form_newyork-4.jsp" %>
+                </c:if>
                 </form>
             </div>
         </div>

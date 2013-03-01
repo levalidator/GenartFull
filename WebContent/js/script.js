@@ -39,7 +39,9 @@ var init = function(){
         var $height = getGoodHeight($(this).find('figure').height(), $(this).find('img').height());
         var $elem = $(this).find('.pict-descr');
 
-        $elem.css({'height' : $height })
+        $elem.css({
+            'height' : $height
+        })
         $elem.show();
         $elem.stop().animate({
             opacity : 0.8
@@ -52,7 +54,9 @@ var init = function(){
         var $height = getGoodHeight($(this).find('figure').height(), $(this).find('img').height());
         var $elem = $(this).find('.pict-descr');
 
-        $elem.css({'height' : $height})
+        $elem.css({
+            'height' : $height
+        })
         $elem.stop().animate({
             opacity : 0
         },500, function(){
@@ -65,6 +69,24 @@ var init = function(){
 
 
 var processing = function(){
+
+    $('#generate-pk').on("click", function(){
+        var id = $(this).attr('data-val');
+        var pjs = Processing.getInstanceById(id);
+        pjs.goAnimation();
+    });
+    
+    $('#generate-wordcloud').on("click", function(){
+        var id = $(this).attr('data-val');
+        var pjs = Processing.getInstanceById(id);
+        pjs.stopAnimation();
+    });
+    
+    $('#generate-creature').on("click", function(){
+        var id = $(this).attr('data-val');
+        var pjs = Processing.getInstanceById(id);
+        pjs.stopAnimation();
+    });
     
     $('#generate').live("click", function(){
         
@@ -155,26 +177,12 @@ var choixsupport = function(){
     $("#choix-support li").on("click",function(){
         var price_support = $(this).find("span.badge").attr("data-value");
         var price_oeuvre = $("#badge-price-oeuvre").attr("data-price-oeuvre");
-        var price_total = parseFloat(price_support) + parseFloat(price_oeuvre);
+        var price_total = parseInt(price_support) + parseInt(price_oeuvre);
                 
         $("#badge-price-support").empty().text(price_support+"€");
         $("#badge-price-total").empty().text(price_total+"€");
-        
-        $("#idSupport").val($(this).attr("data-item-id"));
     });
 }
-
-var pushImage = function(){
-	var canvas = document.getElementById("newyork");
-	var img = canvas.toDataURL("image/png");
-	$.ajax({
-		  type: "POST",
-		  url: "saveimgtemp",
-		  data: {image: img},
-		  success: function(){}
-		});
-}
-
 
 var validatorformart = function(){
     var validator = new FormValidator("form-art",
@@ -201,6 +209,19 @@ var validatorformart = function(){
         });
 }
 
+var deletecartline = function(){
+    
+    $('tr td #deleteline').on('click', function(){
+        
+        var elem = $(this).parent("td").parent('tr');
+        
+        elem.hide(500, function () {
+            elem.remove();
+        });
+    
+    });
+}
+
       
 $('document').ready(function(){
 
@@ -208,9 +229,5 @@ $('document').ready(function(){
     processing();
     choixsupport();
     validatorformart();
-    $("#generate").click(function(){
-    	setTimeout(function() {
-    		pushImage();
-    	}, 2000);
-    });
+    deletecartline();
 });
