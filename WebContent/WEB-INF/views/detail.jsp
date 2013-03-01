@@ -65,7 +65,7 @@
 	                <img src="${ fetemplate.getImage() }"/>
 	                <section class="pict-descr">
 	                    <h4>Titre : <c:out value="${ fetemplate.getName() }" /></h4>
-	                    <p>Auteur : <c:out value="${ artist.getName() }" /></p>
+	                    <p>Auteur : <c:out value="${ artist.getFullName() }" /></p>
 	                </section>
 	            </figure>
 	            
