@@ -101,7 +101,7 @@
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 
-				<form name="form-customer" class="form-horizontal tab-pane active in" id="customer">
+				<form name="form-customer" class="form-horizontal tab-pane active in" id="customer" method="post" action="./connexion">
 					
 					<div id="mailCustomer-control-group" class="control-group">
 						<label for="mailCustomer" class="control-label">E-mail  * : </label>
@@ -124,6 +124,8 @@
 							<span class="help-inline" style="display:none;" id="passwordCustomerConfirm-message"> Les deux mots de passe sont différents. </span>
 						</div>
 					</div>
+					<input type="hidden" value="insert" name="mode"/>
+					<input type="hidden" value="customer" name="object"/>
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 			</section>
@@ -213,7 +215,7 @@
                     },
                     {
                         name: "passwordCustomerConfirm",
-                        rules: 'required|matches[passwordArtist]'
+                        rules: 'required|matches[passwordCustomer]'
                     }
 
                 ],function(errors, event){
