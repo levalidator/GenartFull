@@ -38,7 +38,7 @@ public class ConnexionServlet extends HttpServlet {
     			String phone = request.getParameter("phoneArtist");
     			String website = request.getParameter("websiteArtist");
 
-    			Artist art = new Artist(1, mail, passw, phone, website, name, fname, "", "");
+    			Artist art = new Artist(1, mail, passw, phone, website, name, fname, "", "img/artist.jpg");
     			boolean test = DAOArtist.InsertArtist(art);
     			System.out.println(test);
     		}
