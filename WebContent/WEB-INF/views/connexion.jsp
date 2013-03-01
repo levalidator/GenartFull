@@ -13,7 +13,7 @@
 				<h2>Déjà membre</h2>
 			</section>
 
-			<form name="authentification" class="form-horizontal">
+			<form name="authentification" class="form-horizontal" method="post" action="./connexion">
 				<div id="login-control-group" class="control-group">
 					<label for="login" class="control-label">Identifiant : </label>
 					<div class="controls">
@@ -28,6 +28,8 @@
 						<span class="help-inline" style="display:none;" id="password-message"> Ce champ est obligatoire. </span>
 					</div>
 				</div>
+				<input type="hidden" value="connect" name="mode"/>
+				<input type="hidden" value="both" name="object"/>
 				<input type="submit" class="button red noborder pull-right" value="Connexion"/>
 			</form>
 				
@@ -101,7 +103,7 @@
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 
-				<form name="form-customer" class="form-horizontal tab-pane active in" id="customer">
+				<form name="form-customer" class="form-horizontal tab-pane active in" id="customer" method="post" action="./connexion">
 					
 					<div id="mailCustomer-control-group" class="control-group">
 						<label for="mailCustomer" class="control-label">E-mail  * : </label>
@@ -124,6 +126,8 @@
 							<span class="help-inline" style="display:none;" id="passwordCustomerConfirm-message"> Les deux mots de passe sont différents. </span>
 						</div>
 					</div>
+					<input type="hidden" value="insert" name="mode"/>
+					<input type="hidden" value="customer" name="object"/>
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 			</section>
@@ -213,7 +217,7 @@
                     },
                     {
                         name: "passwordCustomerConfirm",
-                        rules: 'required|matches[passwordArtist]'
+                        rules: 'required|matches[passwordCustomer]'
                     }
 
                 ],function(errors, event){
