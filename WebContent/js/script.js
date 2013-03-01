@@ -155,12 +155,26 @@ var choixsupport = function(){
     $("#choix-support li").on("click",function(){
         var price_support = $(this).find("span.badge").attr("data-value");
         var price_oeuvre = $("#badge-price-oeuvre").attr("data-price-oeuvre");
-        var price_total = parseInt(price_support) + parseInt(price_oeuvre);
+        var price_total = parseFloat(price_support) + parseFloat(price_oeuvre);
                 
         $("#badge-price-support").empty().text(price_support+"€");
         $("#badge-price-total").empty().text(price_total+"€");
+        
+        $("#idSupport").val($(this).attr("data-item-id"));
     });
 }
+
+var pushImage = function(){
+	var canvas = document.getElementById("newyork");
+	var img = canvas.toDataURL("image/png");
+	$.ajax({
+		  type: "POST",
+		  url: "saveimgtemp",
+		  data: {image: img},
+		  success: function(){}
+		});
+}
+
 
 var validatorformart = function(){
     var validator = new FormValidator("form-art",
@@ -193,5 +207,10 @@ $('document').ready(function(){
     init();
     processing();
     choixsupport();
-    validatorformart()
+    validatorformart();
+    $("#generate").click(function(){
+    	setTimeout(function() {
+    		pushImage();
+    	}, 2000);
+    });
 });
