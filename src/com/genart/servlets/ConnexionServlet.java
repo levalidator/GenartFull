@@ -27,6 +27,20 @@ public class ConnexionServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		HttpSession session = request.getSession();
+		//session.invalidate();
+		boolean connected;
+		try {
+			connected = (Boolean) session.getAttribute("connected");
+		} catch (Exception e){
+			connected = false;
+			System.out.println(e.getMessage());
+		}
+		if(connected){
+			request.setAttribute("connected", true);
+		} else {
+			request.setAttribute("connected", false);
+		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/connexion.jsp").forward(request, response);
 	}
 
@@ -73,28 +87,38 @@ public class ConnexionServlet extends HttpServlet {
     		if (null != custo){
     			if(custo.getPasswordCustomer().equals(md5)){
 	    			session.setAttribute("customer", custo);
+	    			session.setAttribute("connected", true);
 	    			param = "connected";
+	        		request.setAttribute("result", param);
+	        		this.getServletContext().getRequestDispatcher("/WEB-INF/views/validconnexion.jsp").forward(request, response);
     			} else {
     				param = "errorPassw";
+    	    		request.setAttribute("result", param);
+    	    		session.setAttribute("connected", false);
+    				this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorconnexion.jsp").forward(request, response);
     			}
     		}
     		
     		if (null != artist){
     			if (artist.getPassword().equals(md5)){
 	    			session.setAttribute("artist", session);
+	    			session.setAttribute("connected", true);
 	    			param = "connected";
+	        		request.setAttribute("result", param);
+	        		this.getServletContext().getRequestDispatcher("/WEB-INF/views/validconnexion.jsp").forward(request, response);
     			} else {
     				param = "errorPassw";
+    				session.setAttribute("connected", false);
+    	    		request.setAttribute("result", param);
+    				this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorconnexion.jsp").forward(request, response);
     			}
     		}
     		
     		if ((null == artist) && (null == custo)){
     			param = "error";
+        		request.setAttribute("result", param);
+        		this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorconnexion.jsp").forward(request, response);
     		}
-
-    		request.setAttribute("result", param);
-
-    		this.getServletContext().getRequestDispatcher("/WEB-INF/views/validconnexion.jsp").forward(request, response);
     	}
     	
 	}
