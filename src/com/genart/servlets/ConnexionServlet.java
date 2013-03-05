@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import com.genart.DAL.DAOArtist;
 import com.genart.DAL.DAOCustomer;
-import com.genart.bdd.AccesBDD;
 import com.genart.beans.Artist;
 import com.genart.beans.Customer;
 
