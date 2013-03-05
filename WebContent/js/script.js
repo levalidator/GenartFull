@@ -39,7 +39,9 @@ var init = function(){
         var $height = getGoodHeight($(this).find('figure').height(), $(this).find('img').height());
         var $elem = $(this).find('.pict-descr');
 
-        $elem.css({'height' : $height })
+        $elem.css({
+            'height' : $height
+        })
         $elem.show();
         $elem.stop().animate({
             opacity : 0.8
@@ -52,7 +54,9 @@ var init = function(){
         var $height = getGoodHeight($(this).find('figure').height(), $(this).find('img').height());
         var $elem = $(this).find('.pict-descr');
 
-        $elem.css({'height' : $height})
+        $elem.css({
+            'height' : $height
+        })
         $elem.stop().animate({
             opacity : 0
         },500, function(){
@@ -65,6 +69,24 @@ var init = function(){
 
 
 var processing = function(){
+
+    $('#generate-pk').on("click", function(){
+        var id = $(this).attr('data-val');
+        var pjs = Processing.getInstanceById(id);
+        pjs.goAnimation();
+    });
+    
+    $('#generate-wordcloud').on("click", function(){
+        var id = $(this).attr('data-val');
+        var pjs = Processing.getInstanceById(id);
+        pjs.stopAnimation();
+    });
+    
+    $('#generate-creature').on("click", function(){
+        var id = $(this).attr('data-val');
+        var pjs = Processing.getInstanceById(id);
+        pjs.stopAnimation();
+    });
     
     $('#generate').live("click", function(){
         
@@ -159,6 +181,8 @@ var choixsupport = function(){
                 
         $("#badge-price-support").empty().text(price_support+"€");
         $("#badge-price-total").empty().text(price_total+"€");
+        
+        $("#idSupport").val($(this).attr("data-item-id"));
     });
 }
 
@@ -187,11 +211,38 @@ var validatorformart = function(){
         });
 }
 
+var deletecartline = function(){
+    
+    $('tr td #deleteline').on('click', function(){
+        
+        var elem = $(this).parent("td").parent('tr');
+        
+        elem.hide(500, function () {
+            elem.remove();
+        });
+    
+    });
+}
+
       
 $('document').ready(function(){
 
     init();
     processing();
     choixsupport();
-    validatorformart()
+    validatorformart();
+    deletecartline();
+    
+    $("form#form-art input.button.red.noborder").click(function(){
+    	var canvas = document.getElementsByTagName("canvas");
+//    	if(canvas[0])
+    	var img = canvas[0].toDataURL("image/png");
+    	setTimeout(function(){
+	    	$.ajax({
+	    		type: "POST",
+	    		url: "saveimgtemp",
+	    		data: { image : img },
+	    		success: function(){}
+	    	});}, 4000);
+    });
 });

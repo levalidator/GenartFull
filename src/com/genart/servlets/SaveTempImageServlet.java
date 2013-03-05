@@ -2,6 +2,7 @@ package com.genart.servlets;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -14,10 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sun.misc.BASE64Decoder;
+
 /**
  * Servlet implementation class SessionServlet
  */
-@WebServlet("/SessionServlet")
+@WebServlet("/saveimgtemp")
 public class SaveTempImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,10 +43,30 @@ public class SaveTempImageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		URL url = new URL("http://www.mkyong.com/image/mypic.jpg");
-		BufferedImage image = ImageIO.read(url);
-		ImageIO.write(image, "jpg", new File("/img/temp/" + request.getSession().getId() + ".jpg"));
-	}
+	{        
+		BASE64Decoder decoder = new BASE64Decoder(); 
+		
+		String param = request.getParameter("image").toString().split(",")[1];
+		
+	    byte[] imgBytes = decoder.decodeBuffer(param);          
+	    
+	    ByteArrayInputStream stream = new ByteArrayInputStream(imgBytes);
+	    
+	    BufferedImage bufImg = ImageIO.read(stream);  
+	    
+	    String sessionId = request.getSession().getId();
 
+		int numSkecth = 0;
+		Object num = request.getSession().getAttribute("numSkecth");
+		if(num != null)
+		{
+			numSkecth = Integer.parseInt(num.toString()); 
+		}
+		request.getSession().setAttribute("numSkecth", numSkecth);
+		
+	    //File imgOutFile = new File("C:\\Eclipse\\workspace\\GenArt\\WebContent\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+	    File imgOutFile = new File("C:\\Eclipse\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\GenArt\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+	    
+		ImageIO.write(bufImg, "jpg", imgOutFile); 
+	}
 }

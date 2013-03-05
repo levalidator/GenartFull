@@ -17,14 +17,15 @@
             </tr>
         </thead>
         <tbody class="cart">
-    	<c:forEach items="${ requestScope['templates'] }" var="template">
-    		<c:set var="idSupport" value="${ template.getId() }"/>
+    	<c:forEach items="${ requestScope['sketchs'] }" var="skecth">
+    		<c:set var="idSupport" value="${ skecth.getId() }"/>
+    		<c:set var="idTemplate" value="${ skecth.getIdTemplate() }"/>
             <tr>
                 <td class="span3">
                     <div class="span2">
-                        <h4><c:out value="${ template.getName() }" /></h4>
+                        <h4><c:out value="${ requestScope['templates'][idTemplate].getName() }" /></h4>
                         <figure>
-                            <img src="${ template.getImage() }" style="width:100%; height:100%" />
+                            <img src="${ skecth.getImage() }" style="width:100%; height:100%" />
                         </figure>
                     </div>
                 </td>
@@ -37,12 +38,12 @@
                     </div>
                 </td>
                 <td class="span2">
-                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge"><c:out value="${ template.getMontant() }" />€</span></div>
+                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge"><c:out value="${ requestScope['templates'][idTemplate].getMontant() }" />€</span></div>
                     <div class="span2"><div class="span1">Support :</div> <span class="badge"><c:out value="${ requestScope['supports'][idSupport].getMontant() }" />€</span></div>
-                    <div class="span2"><div class="span1">Total :</div> <span class="badge"><c:out value="${ template.getMontant() + requestScope['supports'][idSupport].getMontant() }" />€</span></div>
+                    <div class="span2"><div class="span1">Total :</div> <span class="badge"><c:out value="${ requestScope['templates'][idTemplate].getMontant() + requestScope['supports'][idSupport].getMontant() }" />€</span></div>
                 </td>
                 <td class="span3">
-                    <a class="button green" href="details?id=${ template.getId() }">Voir</a>
+                    <a class="button green" href="details?id=${ requestScope['templates'][idTemplate].getId() }">Voir</a>
                     <a class="button red" href="">Supprimer</a>
                 </td>
             </tr>

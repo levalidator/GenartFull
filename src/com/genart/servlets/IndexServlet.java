@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.genart.DAL.DAOArtist;
 import com.genart.DAL.DAOTemplate;
@@ -30,11 +31,26 @@ public class IndexServlet extends HttpServlet
 		List<Template> topTemplates = DAOTemplate.getTopTemplates(3);
 		List<Artist> listArtists = DAOArtist.getListArtist(0);
 		
+		HttpSession session = request.getSession();
+		//session.invalidate();
+		boolean connected;
+		try {
+			connected = (Boolean) session.getAttribute("connected");
+		} catch (Exception e){
+			connected = false;
+			System.out.println(e.getMessage());
+		}
+		
 		Map<Integer, Artist> mapArtist = new HashMap<Integer, Artist>();
 		for(Artist artist : listArtists){
 			mapArtist.put(artist.getId(), artist);
 		}
 		
+		if(connected){
+			request.setAttribute("connected", true);
+		} else {
+			request.setAttribute("connected", false);
+		}
         request.setAttribute(MAP_ARTISTS, mapArtist);
         request.setAttribute(TOP_TEMPLATES, topTemplates);
         request.setAttribute(LST_ARTISTS, listArtists);

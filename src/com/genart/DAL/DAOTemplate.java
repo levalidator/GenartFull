@@ -26,7 +26,9 @@ public class DAOTemplate
 					results.getInt("IdArtist"),
 					results.getInt("montant"),
 					results.getString("created_at"),
-					results.getString("imageTemplate"));
+					results.getString("imageTemplate"),
+					results.getString("pdePath"),
+					results.getString("namePde"));
     	}
     	catch (Exception e)
     	{
@@ -55,7 +57,9 @@ public class DAOTemplate
 						results.getInt("IdArtist"),
 						results.getInt("montant"),
 						results.getString("created_at"),
-						results.getString("imageTemplate"));
+						results.getString("imageTemplate"),
+						results.getString("pdePath"),
+						results.getString("namePde"));
 
 				lesTemplates.add(template);
 			}
@@ -94,7 +98,9 @@ public class DAOTemplate
 						results.getInt("IdArtist"),
 						results.getInt("montant"),
 						results.getString("created_at"),
-						results.getString("imageTemplate"));
+						results.getString("imageTemplate"),
+						results.getString("pdePath"),
+						results.getString("namePde"));
 				
     			topTemplates.add(template);
     		}
@@ -129,7 +135,9 @@ public class DAOTemplate
 						results.getInt("IdArtist"),
 						results.getInt("montant"),
 						results.getString("created_at"),
-						results.getString("imageTemplate"));
+						results.getString("imageTemplate"),
+						results.getString("pdePath"),
+						results.getString("namePde"));
 				
     			topTemplates.add(template);
     		}
