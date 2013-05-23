@@ -48,7 +48,16 @@ public class ConnexionServlet extends HttpServlet {
 	{
 		String mode = request.getParameter("mode");
 		String object = request.getParameter("object");
+		
+		String newUser = request.getParameter("newuser");
+		
+		if (newUser!= null)
+		{
+			this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
+		}
     	
+		System.out.println("en post");
+		
     	if (mode.equals("insert")){
     		if (object.equals("artist")){
     			String name = request.getParameter("nameArtist");

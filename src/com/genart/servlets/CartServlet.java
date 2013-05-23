@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.genart.DAL.DAOSupport;
 import com.genart.DAL.DAOTemplate;
@@ -41,19 +42,32 @@ public class CartServlet extends HttpServlet {
 		List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
 		Map<Integer, Support> supports = new HashMap<Integer, Support>();
 		Map<Integer, Template> templates = new HashMap<Integer, Template>();
-
+		
+		float montantTotal = 0;
+		int nbOeuvres = 0;
+		
 		for(Support support : DAOSupport.GetListSupport())
-		{
 			supports.put(support.getId(), support);
-		}
+
 		for(Template template : DAOTemplate.GetListTemplates())
-		{
 			templates.put(template.getId(), template);
+		
+		if (sketchs != null)
+		{
+			nbOeuvres = sketchs.size();
+			for(Sketch sketch : sketchs)
+				montantTotal += templates.get(sketch.getIdTemplate()).getMontant() + supports.get(sketch.getId()).getMontant();
 		}
+		
 
 		request.setAttribute("templates", templates);
 		request.setAttribute("supports", supports);
 		request.setAttribute("sketchs", sketchs);
+		request.setAttribute("montantTotal", montantTotal);
+		
+		HttpSession session = request.getSession();
+		if (session != null)
+			session.setAttribute("nbOeuvres", nbOeuvres);
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(request, response);
 	}
@@ -63,38 +77,67 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		int idTemplate = Integer.parseInt(request.getParameter("idTemplate").toString());
-		
-	 	Object idsupport = request.getParameter("idSupport");
-		
-		int idSupport = 0;
-
-		try
+		String action = request.getParameter("action").toString();
+		System.out.println(action);
+		if (action.equals("add"))
 		{
-			idSupport = Integer.parseInt(request.getParameter("idSupport").toString());
-		}
-		catch (Exception e)
-		{
-			// TODO: handle exception
+			int idTemplate = Integer.parseInt(request.getParameter("idTemplate").toString());
+			
+		 	Object idsupport = request.getParameter("idSupport");
+			
+			int idSupport = 0;
+	
+			try
+			{
+				idSupport = Integer.parseInt(request.getParameter("idSupport").toString());
+			}
+			catch (Exception e)
+			{
+				// TODO: handle exception
+			}
+			
+			int numSkecth = 0;
+			Object num = request.getSession().getAttribute("numSkecth");
+			if(num != null)
+			{
+				numSkecth = Integer.parseInt(num.toString()); 
+			}
+			
+			List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
+			if(sketchs == null)
+			{
+				sketchs = new ArrayList<Sketch>();
+			}
+			sketchs.add(new Sketch(idSupport, idTemplate, "img/temp/" + request.getSession().getId() + "_" + numSkecth + ".jpg", sketchs.size()));
+			++numSkecth;
+			
+			request.getSession().setAttribute("numSkecth", numSkecth);
+			request.getSession().setAttribute("sketchs", sketchs);
+			
+			response.sendRedirect("./cart");
 		}
 		
-		int numSkecth = 0;
-		Object num = request.getSession().getAttribute("numSkecth");
-		if(num != null)
+		if (action.equals("delete"))
 		{
-			numSkecth = Integer.parseInt(num.toString()); 
+			System.out.println("entrée delte");
+			if (null != request.getParameter("numero"))
+			{
+				System.out.println("id not null");
+				int numSketch = Integer.parseInt(request.getParameter("numero").toString());
+				List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
+				
+				if (sketchs != null)
+				{
+					Sketch currentSketch = null;
+					for (Sketch sketch : sketchs)
+						if (sketch.getNumero() == numSketch)
+							currentSketch = sketch;
+					
+					sketchs.remove(currentSketch);
+					System.out.println("deleted");
+				}
+			}
+			response.sendRedirect("./cart");
 		}
-		
-		List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
-		if(sketchs == null)
-		{
-			sketchs = new ArrayList<Sketch>();
-		}
-		sketchs.add(new Sketch(idSupport, idTemplate, "img/temp/" + request.getSession().getId() + "_" + numSkecth + ".jpg"));
-		++numSkecth;
-		request.getSession().setAttribute("numSkecth", numSkecth);
-		request.getSession().setAttribute("sketchs", sketchs);
-		
-		response.sendRedirect("./cart");
 	}
 }

@@ -46,6 +46,7 @@
             <form action="./cart" method="post">
 				<input type="hidden" name="idTemplate" id="idTemplate" value="${ template.getId() }">
 				<input type="hidden" name="idSupport" id="idSupport" value="${ support.getId() }">
+				<input type="hidden" name="action" id="action" value="add">
 	            <button id="add-oeuvre" class="button red noborder" name="Add">Ajouter à mes oeuvres</button> 
 			</form>
         </div>
