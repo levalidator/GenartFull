@@ -65,7 +65,7 @@ public class SaveTempImageServlet extends HttpServlet {
 		request.getSession().setAttribute("numSkecth", numSkecth);
 		
 	    //File imgOutFile = new File("C:\\Eclipse\\workspace\\GenArt\\WebContent\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
-	    File imgOutFile = new File("C:\\Eclipse\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\GenArt\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+	    File imgOutFile = new File("/Users/romanleichnig/Projets/Java EE/Genart/WebContent/img/temp/" + sessionId + "_" + numSkecth + ".jpg");
 	    
 		ImageIO.write(bufImg, "jpg", imgOutFile); 
 	}

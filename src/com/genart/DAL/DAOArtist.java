@@ -119,4 +119,25 @@ public class DAOArtist
     		return null;
     	}
 	}
+	
+	public static int GetNextId(){
+		try 
+		{	
+			String query = "select max(idArtist) as max from Artist";
+			ResultSet results = AccesBDD.getStatement().executeQuery(query);
+			boolean exists = results.first();
+			int maxId; 
+			if (exists){
+				maxId = Integer.parseInt(results.getString("max")) + 1;
+			} else {
+				maxId = 0;
+			}
+			return maxId;
+    	}
+		catch (Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    		return 0;
+    	}
+	}
 }

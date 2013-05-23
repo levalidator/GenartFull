@@ -20,12 +20,13 @@
     	<c:forEach items="${ requestScope['sketchs'] }" var="skecth">
     		<c:set var="idSupport" value="${ skecth.getId() }"/>
     		<c:set var="idTemplate" value="${ skecth.getIdTemplate() }"/>
+    		<c:set var="numSketch" value="${ skecth.getNumero() }"/>
             <tr>
                 <td class="span3">
                     <div class="span2">
                         <h4><c:out value="${ requestScope['templates'][idTemplate].getName() }" /></h4>
                         <figure>
-                            <img src="${ skecth.getImage() }" style="width:100%; height:100%" />
+                            <img src="${ skecth.getImage() }" style="width:100%; max-height:100px" />
                         </figure>
                     </div>
                 </td>
@@ -45,6 +46,11 @@
                 <td class="span3">
                     <a class="button green" href="details?id=${ requestScope['templates'][idTemplate].getId() }">Voir</a>
                     <a class="button red" href="">Supprimer</a>
+                    <form action="./cart" method="post">
+					<input type="hidden" name="action" id="action" value="delete">
+					<input type="hidden" name="numero" id="numero" value="${ numSketch }">
+		            <button id="add-oeuvre" class="button red noborder" name="Add">Delete</button> 
+			</form>
                 </td>
             </tr>
 		</c:forEach>
@@ -60,7 +66,7 @@
                     
                 </td>
                 <td class="span2">
-                    <div class="span2"><div class="span1">Total :</div> <span class="badge">90€</span></div>
+                    <div class="span2"><div class="span1">Total :</div> <span class="badge"><c:out value="${ requestScope['montantTotal'] }" />€</span></div>
                 </td>
                 <td class="span3">
                     <a class="button red" href="">Passer au paiement</a>

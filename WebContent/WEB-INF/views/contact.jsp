@@ -10,7 +10,7 @@
 	<section class="container">
 		<section class="span5">
 			<section class="page-header">
-				<h2>Déjà membre</h2>
+				<h2>Nous contacter</h2>
 			</section>
 
 			<form name="form-contact" class="form-horizontal">

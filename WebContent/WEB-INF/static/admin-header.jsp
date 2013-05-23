@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GenArt 1.0</title>
+        <title>Template Base</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -21,28 +21,27 @@
         <script type="text/javascript" src="js/processing.js"></script>
         <script src="js/bootstrap/bootstrap.js"></script>
         <script src="js/script.js"></script>
+        <script src="js/admin.js"></script>
     </head>
     <body>
         <!--header-->
         <nav class="navbar navbar-fixed-top">
             <section class="navbar-inner">
                 <section class="container">
+
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
                     <section class="logo span2">
                         <a href="./"><img src="img/logo.png" alt=""/></a>
                     </section>
+
                     <section class="nav-collapse span9 collapse">
                         <ul class="nav pull-right">
                             <li class="active"><a href="./">Accueil</a></li>
-                            <li class="dropdown"><a href="artist.jsp">Artistes</a></li>
-                            <li><a href="./listing">Galerie</a></li>
-                            <li><a href="./contact">Contact</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a class="button green" href="./cart">Mes oeuvres (<c:out value="${nbOeuvres}" />)</a></li>
                             <li class="divider-vertical"></li>
                             <c:choose>
 								<c:when test="${connected}">
@@ -54,8 +53,11 @@
 							</c:choose>
                         </ul>
                     </section>
+
                 </section>
             </section>
         <div class="divider-slice"></div>
-      </nav>
+        </nav>
+    </section>
+</nav>
 <!--end header-->

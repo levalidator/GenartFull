@@ -46,6 +46,16 @@ public class IndexServlet extends HttpServlet
 			mapArtist.put(artist.getId(), artist);
 		}
 		
+		int nbOeuvres = 0;
+		try {
+			Object nb = session.getAttribute("nbOeuvres");
+			nbOeuvres = Integer.parseInt(nb.toString());
+		} catch (Exception e){
+			nbOeuvres = 0;
+		}
+		
+		session.setAttribute("nbOeuvres", nbOeuvres);
+		
 		if(connected){
 			request.setAttribute("connected", true);
 		} else {
