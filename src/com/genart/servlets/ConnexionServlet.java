@@ -53,10 +53,36 @@ public class ConnexionServlet extends HttpServlet {
 		
 		if (newUser!= null)
 		{
-			this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
+			Boolean insert = Boolean.parseBoolean(newUser);
+			if (insert)
+			{
+				String name = request.getParameter("name");
+				String fname = request.getParameter("firstname");
+    			String mail = request.getParameter("mailArtist");
+    			String passw = request.getParameter("password");
+    			String phone = request.getParameter("phone");
+    			String website = request.getParameter("website");
+    			String md5 = encryptPassword(passw);
+				
+    			insertArtist(1, mail, md5, phone, website, name, fname, "", "img/artist.jpg");
+    			
+				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
+			}
+			else
+			{
+				int id = Integer.parseInt(request.getParameter("id"));
+				String name = request.getParameter("name");
+				String fname = request.getParameter("firstname");
+    			String mail = request.getParameter("mailArtist");
+    			String passw = request.getParameter("password");
+    			String phone = request.getParameter("phone");
+    			String website = request.getParameter("website");
+    			String md5 = encryptPassword(passw);
+    			
+				updateArtist(id, mail, md5, phone, website, name, fname, "", "img/artist.jpg");
+				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
+			}
 		}
-    	
-		System.out.println("en post");
 		
     	if (mode.equals("insert")){
     		if (object.equals("artist")){
@@ -68,8 +94,7 @@ public class ConnexionServlet extends HttpServlet {
     			String website = request.getParameter("websiteArtist");
     			String md5 = encryptPassword(passw);
     			
-    			Artist art = new Artist(1, mail, md5, phone, website, name, fname, "", "img/artist.jpg");
-    			DAOArtist.InsertArtist(art);
+    			insertArtist(1, mail, md5, phone, website, name, fname, "", "img/artist.jpg");
     		}
     		
     		if (object.equals("customer")){
@@ -145,4 +170,17 @@ public class ConnexionServlet extends HttpServlet {
 		String md5 = new BigInteger(1, encryptedPass.digest()).toString(16);
 		return md5;
 	}
+	
+	private void insertArtist(int id, String mail, String md5, String phone, String website, String name, String fname, String description, String pathAvatar)
+	{
+		Artist artist = new Artist(id, mail, md5, phone, website, name, fname, description, pathAvatar);
+		DAOArtist.InsertArtist(artist);
+	}
+	
+	private void updateArtist(int id, String mail, String md5, String phone, String website, String name, String fname, String description, String pathAvatar)
+	{
+		Artist artist = new Artist(id, mail, md5, phone, website, name, fname, description, pathAvatar);
+		DAOArtist.UpdateArtist(artist);
+	}
+	
 }
