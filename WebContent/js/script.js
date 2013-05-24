@@ -239,6 +239,7 @@ $('document').ready(function(){
     	var img = canvas[0].toDataURL("image/png");
     	setTimeout(function(){
 	    	$.ajax({
+	    		async: false,
 	    		type: "POST",
 	    		url: "saveimgtemp",
 	    		data: { image : img },
