@@ -21,7 +21,7 @@ public class Template
 	
 	public Template(int id, String name, String date, String description, int idArtist, float montant, String createdAt, String image, String pdePath, String namePde)
 	{
-		this._id = id;
+		this._id = id; 
 		this._name = name;
 		this._date = DateExtension.toDate(date);
 		this._description = description;

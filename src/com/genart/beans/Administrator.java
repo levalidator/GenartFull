@@ -11,7 +11,7 @@ public class Administrator {
 		this.setMailAdministrator(mailAdministrator);
 		this.setPasswordAdministrator(passwordAdministrator);
 	}
-	
+	 
 	public int getIdAdministrator() {return _idAdministrator;}
 	public String getMailAdministrator() {return _mailAdministrator;}
 	public String getPasswordAdministrator() {return _passwordAdministrator;}

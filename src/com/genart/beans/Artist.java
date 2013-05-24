@@ -16,7 +16,7 @@ public class Artist
 	
 	public Artist(int id, String mail, String password, String phone, String webSite, String name, String firstName, String description, String pathAvatar)
 	{
-		this._id = id;
+		this._id = id; 
 		this._mail = mail;
 		this._password = password;
 		this._phone = phone;

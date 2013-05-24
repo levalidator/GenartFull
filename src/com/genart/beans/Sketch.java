@@ -9,7 +9,7 @@ public class Sketch {
 	public Sketch() {}
 	public Sketch(int id,int idTemplate, String image, int numero)
 	{
-		this._id = id;
+		this._id = id; 
 		this._idTemplate = idTemplate;
 		this._image = image;
 		this._numero = numero;

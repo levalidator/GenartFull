@@ -12,7 +12,7 @@ public class Support {
 	public Support() {}
 	public Support(int id, float dimension_x, float dimension_y, float dimension_z, String name, String description, float montant)
 	{
-		this._id = id;
+		this._id = id; 
 		this._dimention_x = dimension_x;
 		this._dimention_y = dimension_y;
 		this._dimention_z = dimension_z;
