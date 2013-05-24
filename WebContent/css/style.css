@@ -7,6 +7,16 @@ h2,
 h3 {
   font-weight: normal;
 }
+.text-center {
+  text-align: center !important;
+}
+.ref {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+.img-detail-artist {
+  width:100%;
+}
 .loader {
   position: absolute;
   top: 300px;
@@ -20,11 +30,6 @@ h2 {
   color: #525252;
   font-size: 20.5px;
 }
-
-.text-center{
-	text-align:center;
-}
-
 .button {
   display: inline-block;
   color: #FFF !important;
@@ -55,7 +60,7 @@ label {
 }
 .button:hover {
   text-decoration: none;
-  background: #525252 !important;
+  
 }
 .button.green,
 .button.green:hover,
@@ -183,3 +188,22 @@ label {
 .footer p {
   text-align: center;
 }
+
+.admin-table {
+    width: 100%;
+}
+
+.admin-table th{
+   height: 60px;
+   border-width: 1px;
+   border-bottom-style: solid;
+}
+
+.admin-table tr{
+   height: 40px;
+}
+
+.admin-table .tr-s{
+    background: #e7e7e7;
+}
+

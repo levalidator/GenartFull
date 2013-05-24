@@ -77,7 +77,7 @@
       <ul class="artist-list">
         <c:forEach items="${listArtists}" var="artist" varStatus="item">
 	      	<li>
-		      	<a href="artist.jsp?id=${artist.getId()}">
+		      	<a href="artistDetails?id=${artist.getId()}">
 		        	<img src="${artist.getPathAvatar()}" width="88" height="93" class="img-circle img-polaroid"/>
 		        </a>
 	        </li>
