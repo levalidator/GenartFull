@@ -58,15 +58,17 @@ public class SaveTempImageServlet extends HttpServlet {
 
 		int numSkecth = 0;
 		Object num = request.getSession().getAttribute("numSkecth");
+		request.getSession().setAttribute(sessionId + "_" + numSkecth, request.getParameter("image").toString());
 		if(num != null)
 		{
 			numSkecth = Integer.parseInt(num.toString()); 
 		}
 		request.getSession().setAttribute("numSkecth", numSkecth);
-		
-	    //File imgOutFile = new File("C:\\Eclipse\\workspace\\GenArt\\WebContent\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
-	    File imgOutFile = new File("/Users/romanleichnig/Projets/Java EE/Genart/WebContent/img/temp/" + sessionId + "_" + numSkecth + ".jpg");
+		//C:\\Eclipse\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\GenArt\\img\\temp\\
+		//File imgOutFile = new File("C:\\Eclipse\\workspace\\GenArt\\WebContent\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+		//File imgOutFile = new File("C:\\Eclipse\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\GenArt\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
+	    //File imgOutFile = new File("/Users/romanleichnig/Projets/Java EE/Genart/WebContent/img/temp/" + sessionId + "_" + numSkecth + ".jpg");
 	    
-		ImageIO.write(bufImg, "jpg", imgOutFile); 
+		//ImageIO.write(bufImg, "jpg", imgOutFile); 
 	}
 }
