@@ -97,7 +97,7 @@
                     </c:forEach>
                 </table>
                 
-                <div data-new-id="6" href="#modal-customer" role="button" class="button green add-customer" data-toggle="modal">Enregistrer un client</div>
+                <div data-new-id=${ requestScope['maxIdCustomer'] } href="#modal-customer" role="button" class="button green add-customer" data-toggle="modal">Enregistrer un client</div>
             
             </div>
             
@@ -151,35 +151,37 @@
                         <th>Actions</th>
                         
                     </tr>
+                    <c:forEach items="${ requestScope['products'] }" var="product">
                     <tr id="tr-product-1">
                         <td>
-                            1
+                            <c:out value="${ product.getId() }"/>
                         </td>
                         <td>
-                            <div id="div-productname-1">produit 1</div>
+                            <div id="div-productname-${ product.getId() }">${ product.getName() }</div>
                         </td>
                         <td>
-                            <div id="div-productprice-1">20</div>
+                            <div id="div-productprice-${ product.getId() }">${ product.getMontant() }</div>
                         </td>
                         <td>
-                            <div id="div-productdescription-1">description 1</div>
+                            <div id="div-productdescription-${ product.getId() }">${ product.getDescription() }</div>
                         </td>
                         <td>
-                            <div id="div-dimx-1">20</div>
+                            <div id="div-dimx-${ product.getId() }">${ product.getDimensionX() }</div>
                         </td>
                         <td>
-                            <div id="div-dimy-1">40</div>
+                            <div id="div-dimy-${ product.getId() }">${ product.getDimensionY() }</div>
                         </td>
                         <td>
-                            <div id="div-dimz-1">20</div>
+                            <div id="div-dimz-${ product.getId() }">${ product.getDimensionZ() }</div>
                         </td>
                         <td>
-                            <a data-id="1" href="#modal-product" role="button" class="button green edit-product" data-toggle="modal">Edit</a>
-                            <a data-id="1" href="#modal-confirm" role="button" class="button red delete-product" data-toggle="modal">Supprimer</a>
+                            <a data-id="${ product.getId() }" href="#modal-product" role="button" class="button green edit-product" data-toggle="modal">Edit</a>
+                            <a data-id="${ product.getId() }" href="#modal-confirm" role="button" class="button red delete-product" data-toggle="modal">Supprimer</a>
                         </td>
                     </tr>
+                    </c:forEach>
                 </table>
-                <div data-new-id="6" href="#modal-product" role="button" class="button green add-product" data-toggle="modal">Add Product</div>
+                <div data-new-id="${ requestScope['maxIdSupport'] }" href="#modal-product" role="button" class="button green add-product" data-toggle="modal">Add Product</div>
             </div>
             <div class="tab-pane fade" id="projects">
                 <div class="span9">

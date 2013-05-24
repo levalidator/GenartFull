@@ -31,7 +31,7 @@ public class ArtistDbServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("delete");
 	}
 
 	/**
@@ -39,6 +39,15 @@ public class ArtistDbServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newUser = request.getParameter("newuser");
+		if (null != request.getParameter("action"))
+		{
+			String action = request.getParameter("action");
+			if (action.equals("delete"));
+			{
+				DAOArtist.DeleteArtist(Integer.parseInt(request.getParameter("id")));
+				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
+			}
+		}
 		
 		if (newUser!= null)
 		{

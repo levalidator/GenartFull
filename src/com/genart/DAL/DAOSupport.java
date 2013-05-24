@@ -44,4 +44,28 @@ public class DAOSupport {
     	}
 		return listSupports;
 	}
+	
+	/**
+	 * Get the max idSupport in the Support table 
+	 */
+	public static int GetNextId(){
+		try 
+		{	
+			String query = "select max(idSupport) as max from Customer";
+			ResultSet results = AccesBDD.getStatement().executeQuery(query);
+			boolean exists = results.first();
+			int maxId; 
+			if (exists){
+				maxId = Integer.parseInt(results.getString("max"));
+			} else {
+				maxId = 0;
+			}
+			return maxId;
+    	}
+		catch (Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    		return 0;
+    	}
+	}
 }

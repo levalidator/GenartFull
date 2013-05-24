@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.genart.bdd.AccesBDD;
+import com.genart.beans.Artist;
 import com.genart.beans.Customer;
 /**
  * DAO for Customer class
@@ -104,5 +105,23 @@ public class DAOCustomer {
     		System.out.println(e.getMessage());
     		return 0;
     	}
+	}
+	/**
+	 * Update an artist
+	 */
+	public static boolean UpdateCustomer(Customer customer)
+	{
+		try{
+			String query = "UPDATE Customer SET " 
+						   + "mailCustomer = '"+customer.getMailCustomer()+"', "
+						   + "passwordCustomer = '"+customer.getPasswordCustomer()+"' "
+						   + "WHERE `id Customer` = '"+ customer.getIdCustomer() +"'";
+			
+			AccesBDD.getStatement().execute(query);			
+			return true;
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 }
