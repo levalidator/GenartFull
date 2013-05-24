@@ -24,7 +24,7 @@ var valid = function()
         
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/GenArt/connexion',
+            url: 'http://localhost:8080/GenArt/dbArtist',
             data: {
                 newuser: newuser,
                 id: id,
@@ -138,7 +138,32 @@ var add = function()
         $('#phoneArtist').val('');
         $('#websiteArtist').val('');
         
-        $('#modal-label-user').text("Ajout d'un nouvel utilisateu");
+        $('#modal-label-user').text("Enregistrer un artiste");
+        
+        $('#valid-user').attr('data-newuser', "true");
+        
+    });
+  
+};
+
+var addSupport = function()
+{
+
+    $('.add-support').on('click', function(){
+        
+        var new_id = $(this).attr('data-new-id');
+        
+        $('#valid-user').attr('data-id', new_id);
+        
+        $('#nameArtist').val('');
+        $('#firstnameArtist').val('');
+        $('#mailArtist').val('');
+        $('#passwordArtist').val('');
+        $('#passwordArtistConfirm').val('');
+        $('#phoneArtist').val('');
+        $('#websiteArtist').val('');
+        
+        $('#modal-label-user').text("Ajouter un support");
         
         $('#valid-user').attr('data-newuser', "true");
         
@@ -153,7 +178,7 @@ var deletefunction = function()
         var elem = $(this);
         var id = elem.attr('data-id');
         $('#confirm-delete').attr('data-value', 'tr-user-' + id);
-        $('#confirm-message').text('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')
+        $('#confirm-message').text('Etes-vous sur de vouloir supprimer cet utilisateur ?')
     });
     
 };

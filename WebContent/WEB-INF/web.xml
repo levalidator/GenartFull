@@ -36,6 +36,10 @@
     <servlet-name>DeconnexionServlet</servlet-name>
     <servlet-class>com.genart.servlets.DeconnexionServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.genart.servlets.AdminServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/IndexServlet</url-pattern>
@@ -63,5 +67,9 @@
   <servlet-mapping>
     <servlet-name>DeconnexionServlet</servlet-name>
     <url-pattern>/DeconnexionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -145,18 +145,34 @@ public class DAOArtist
 	{
 		try{
 			String query = "UPDATE Artist SET " 
-						   + "mailArtist = '"+artist.getMail()+"'"
-						   + "passwordArtist = '"+artist.getPassword()+"'"
-						   + "phoneArtist = '"+artist.getPhone()+"'"
-						   + "websiteArtist = '"+artist.getWebSite()+"'"
-						   + "nameArtist = '"+artist.getName()+"'"
-						   + "firstNameArtist = '"+artist.getFirstName()+"'"
-						   + "descriptionArtist = '"+artist.getDescription()+"'"
-						   + "pathAvatarArtist = '"+artist.getPathAvatar()+"'"
-						   + "WHERE idArtist = '"+ artist.getId() +"'";			
+						   + "mailArtist = '"+artist.getMail()+"', "
+						   + "passwordArtist = '"+artist.getPassword()+"', "
+						   + "phoneArtist = '"+artist.getPhone()+"', "
+						   + "websiteArtist = '"+artist.getWebSite()+"', "
+						   + "nameArtist = '"+artist.getName()+"', "
+						   + "firstNameArtist = '"+artist.getFirstName()+"', "
+						   + "descriptionArtist = '"+artist.getDescription()+"', "
+						   + "pathAvatarArtist = '"+artist.getPathAvatar()+"' "
+						   + "WHERE idArtist = '"+ artist.getId() +"'";
+			
 			AccesBDD.getStatement().execute(query);			
 			return true;
 		} catch (Exception e){
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	public static boolean DeleteArtist(int idArtist)
+	{
+		try {
+			
+			String query = "DELETE from Artist where idArtist = '"+ idArtist +"'";
+			AccesBDD.getStatement().execute(query);			
+			
+			return true;
+		} catch (Exception e)
+		{
 			System.out.println(e.getMessage());
 			return false;
 		}

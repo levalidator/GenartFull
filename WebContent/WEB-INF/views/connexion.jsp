@@ -28,8 +28,6 @@
 						<span class="help-inline" style="display:none;" id="password-message"> Ce champ est obligatoire. </span>
 					</div>
 				</div>
-				<input type="hidden" value="connect" name="mode"/>
-				<input type="hidden" value="both" name="object"/>
 				<input type="submit" class="button red noborder pull-right" value="Connexion"/>
 			</form>
 				
@@ -48,7 +46,7 @@
 			</ul>
 			<section class="tab-content">
 				
-				<form name="form-artist" class="form-horizontal tab-pane fade" id="artist" method="post" action="./connexion">
+				<form name="form-artist" class="form-horizontal tab-pane fade" id="artist" method="post" action="./dbArtist">
 					<div id="nameArtist-control-group" class="control-group">
 						<label for="nameArtist" class="control-label">Nom  * : </label>
 						<div class="controls">
@@ -98,12 +96,10 @@
 							<span class="help-inline" style="display:none;" id="websiteArtist-message">  </span>
 						</div>
 					</div>
-					<input type="hidden" value="insert" name="mode"/>
-					<input type="hidden" value="artist" name="object"/>
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 
-				<form name="form-customer" class="form-horizontal tab-pane active in" id="customer" method="post" action="./connexion">
+				<form name="form-customer" class="form-horizontal tab-pane active in" id="customer" method="post" action="./dbCustomer">
 					
 					<div id="mailCustomer-control-group" class="control-group">
 						<label for="mailCustomer" class="control-label">E-mail  * : </label>
@@ -126,8 +122,6 @@
 							<span class="help-inline" style="display:none;" id="passwordCustomerConfirm-message"> Les deux mots de passe sont différents. </span>
 						</div>
 					</div>
-					<input type="hidden" value="insert" name="mode"/>
-					<input type="hidden" value="customer" name="object"/>
 					<input type="submit" class="button red noborder pull-right" value="Inscription"/>
 				</form>
 			</section>
