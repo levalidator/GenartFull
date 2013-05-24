@@ -8,6 +8,30 @@
 </header>
 
 <section class="content">
+	<div class="container">
+		<c:set var="artist" value="${artist}" />
+		<div class="pull-left span2">
+			<img src="${ artist.getPathAvatar() }"
+				class="img-circle img-polaroid img-detail-artist">
+		</div>
+		<div class="pull-left span8" style="margin-left: 60px;">
+			<div class="page-header">
+				<h2>
+					<c:out value="${ artist.getFullName()}" />
+				</h2>
+			</div>
+			<div class="description-artist">
+				<p>
+					<c:out value="${ artist.getDescription()}" />
+				</p>
+				<p>
+					<c:out value="${ artist.getWebSite()}" />
+				</p>
+			</div>
+			<a href="artistDetails?id=<c:out value="${artist.getId()}"/>" class="button green pull-right" >En savoir plus</a>
+		</div>
+	</div>
+
 	<section class="container-fluid">
 		<div class="spacer"></div>
 		<section class="page-header">

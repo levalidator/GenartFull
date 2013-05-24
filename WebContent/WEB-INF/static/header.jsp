@@ -43,7 +43,7 @@
                             <li><a href="./contact">Contact</a></li>
                             <c:choose>
 								<c:when test="${connected}">
-									<li><a href="./contact">Mon compte</a></li>	
+									<li><a href="./MyAccount">Mon compte</a></li>	
 								</c:when>
 							</c:choose>
                             <li class="divider-vertical"></li>
