@@ -71,7 +71,7 @@ public class ConnexionServlet extends HttpServlet {
 
 		if (null != artist) {
 			if (artist.getPassword().equals(md5)) {
-				session.setAttribute("artist", session);
+				session.setAttribute("artist", artist);
 				session.setAttribute("connected", true);
 				param = "connected";
 				request.setAttribute("result", param);
@@ -86,7 +86,7 @@ public class ConnexionServlet extends HttpServlet {
 		
 		if (null != admin) {
 			if (admin.getPasswordAdministrator().equals(md5)){
-				session.setAttribute("admin", session);
+				session.setAttribute("admin", admin);
 				session.setAttribute("connected", true);
 				session.setAttribute("userType", "admin");
 				param = "connected";
