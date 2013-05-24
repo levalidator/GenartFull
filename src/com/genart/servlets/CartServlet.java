@@ -13,11 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.genart.DAL.DAOOrder;
 import com.genart.DAL.DAOSupport;
 import com.genart.DAL.DAOTemplate;
+import com.genart.beans.Order;
+import com.genart.beans.OrderLine;
 import com.genart.beans.Sketch;
 import com.genart.beans.Support;
 import com.genart.beans.Template;
+import commons.SessionManager;
 
 /**
  * Servlet implementation class CartServlet
@@ -38,7 +42,7 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	{		
 		List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
 		Map<Integer, Support> supports = new HashMap<Integer, Support>();
 		Map<Integer, Template> templates = new HashMap<Integer, Template>();
@@ -58,7 +62,6 @@ public class CartServlet extends HttpServlet {
 			for(Sketch sketch : sketchs)
 				montantTotal += templates.get(sketch.getIdTemplate()).getMontant() + supports.get(sketch.getId()).getMontant();
 		}
-		
 
 		request.setAttribute("templates", templates);
 		request.setAttribute("supports", supports);
@@ -137,6 +140,30 @@ public class CartServlet extends HttpServlet {
 					System.out.println("deleted");
 				}
 			}
+			response.sendRedirect("./cart");
+		}
+		
+		if (action.equals("paiement"))
+		{
+			if(!SessionManager.isConnected(request.getSession()))
+			{
+				response.sendRedirect("./cart");
+				return;
+			}
+			List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
+			Order order = new Order();
+			order.setLignes(new ArrayList<OrderLine>());
+			
+			for(Sketch sketch : sketchs)
+			{
+				OrderLine line = new OrderLine();
+				line.setIdSketch(sketch.getIdTemplate());
+				line.setIdSupport(sketch.getId());
+				order.getLignes().add(line);
+			}
+			
+			DAOOrder.insertOrder(order);
+			
 			response.sendRedirect("./cart");
 		}
 	}
