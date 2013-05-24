@@ -18,13 +18,13 @@ import com.genart.beans.Template;
  * Servlet implementation class ArtistDetails
  */
 @WebServlet("/artistDetails")
-public class ArtistDetails extends HttpServlet {
+public class ArtistDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ArtistDetails() {
+    public ArtistDetailsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
