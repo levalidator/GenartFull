@@ -58,11 +58,11 @@ public class SaveTempImageServlet extends HttpServlet {
 
 		int numSkecth = 0;
 		Object num = request.getSession().getAttribute("numSkecth");
-		request.getSession().setAttribute(sessionId + "_" + numSkecth, request.getParameter("image").toString());
 		if(num != null)
 		{
 			numSkecth = Integer.parseInt(num.toString()); 
 		}
+		request.getSession().setAttribute(sessionId + "_" + numSkecth, request.getParameter("image").toString());
 		request.getSession().setAttribute("numSkecth", numSkecth);
 		//C:\\Eclipse\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\GenArt\\img\\temp\\
 		//File imgOutFile = new File("C:\\Eclipse\\workspace\\GenArt\\WebContent\\img\\temp\\" + sessionId + "_" + numSkecth + ".jpg");
