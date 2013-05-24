@@ -11,11 +11,12 @@
     <div class="">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#users" data-toggle="tab">Artistes</a></li>
-            <li class=""><a href="#products" data-toggle="tab">Supports</a></li>
+            <li class=""><a href="#clients" data-toggle="tab">Clients</a></li>
+            <li class=""><a href="#carts" data-toggle="tab">Commandes</a></li>
+            <li class=""><a href="#products" data-toggle="tab">Products</a></li>
             <li class=""><a href="#projects" data-toggle="tab">Process-projects</a></li>
         </ul>
         <div class="tab-content">
-        
             <div class="tab-pane fade active in" id="users">
                 <div class="span9">
                     <h3>Artistes enregistrés</h3>
@@ -66,10 +67,77 @@
                 <div data-new-id=${ requestScope['maxIdArtist'] } href="#modal-user" role="button" class="button green add-user" data-toggle="modal">Enregistrer un artiste</div>
             
             </div>
-            
-            <div class="tab-pane fade active" id="products">
+            <div class="tab-pane fade" id="clients">
                 <div class="span9">
-                    <h3>Supports disponibles</h3>
+                    <h3>Clients enregistrés</h3>
+                </div>
+                <table id="customer-tab" class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>E-mail</th>
+                        <th>Password</th>
+                        <th>Action</th>
+                    </tr>
+                    <c:forEach items="${ requestScope['customers'] }" var="customer">
+	                    <tr id="tr-customer-${ customer.getIdCustomer() })">
+	                        <td>
+	                            <c:out value="${ customer.getIdCustomer() }"/>
+	                        </td>
+	                        <td>
+	                            <div id="div-mailcustomer-${ customer.getIdCustomer() }">${ customer.getMailCustomer() }</div>
+	                        </td>
+	                        <td>
+	                            <div id="div-passwordcustomer-${ customer.getIdCustomer() }">**********</div>
+	                        </td>
+	                        <td>
+	                            <a data-id="${ customer.getIdCustomer() }" href="#modal-customer" role="button" class="button green edit-customer" data-toggle="modal">Edit</a>
+	                            <a data-id="${ customer.getIdCustomer() }" href="#modal-confirm" role="button" class="button red delete-customer" data-toggle="modal">Supprimer</a>
+	                        </td>
+	                    </tr>
+                    </c:forEach>
+                </table>
+                
+                <div data-new-id="6" href="#modal-customer" role="button" class="button green add-customer" data-toggle="modal">Enregistrer un client</div>
+            
+            </div>
+            
+            <div class="tab-pane fade" id="carts">
+                <div class="span9">
+                    <h3>Cart List</h3>
+                </div>
+                <table id="cart-tab" class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Numero</th>
+                        <th>Client</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr id="tr-cart-1">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <div id="div-numbercart-1">TEH582-558R</div>
+                        </td>
+                        <td>
+                            <div id="div-clientcart-1">jeanclaude dupond</div>
+                        </td>
+                        <td>
+                            <a data-id="1" href="#modal-cart" role="button" class="button green edit-cart" data-toggle="modal">Edit</a>
+                            <a data-id="1" href="#modal-confirm" role="button" class="button red delete-cart" data-toggle="modal">Supprimer</a>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+                <div data-new-id="6" href="#modal-cart" role="button" class="button green add-cart" data-toggle="modal">Add cart</div>
+            
+            </div>
+
+
+            <div class="tab-pane fade" id="products">
+                <div class="span9">
+                    <h3>Products List</h3>
                 </div>
                 <table  class="table table-striped">
                     <tr>
@@ -77,45 +145,42 @@
                         <th>Nom</th>
                         <th>Prix</th>
                         <th>Description</th>
-                        <th>Dimension X</th>
-                        <th>Dimension Y</th>
-                        <th>Dimension Z</th>
+                        <th>Longueur</th>
+                        <th>Largeur</th>
+                        <th>Profondeur</th>
                         <th>Actions</th>
                         
                     </tr>
-                    <c:forEach items="${ requestScope['products'] }" var="product">
-	                    <tr id="tr-product-1">
-	                        <td>
-	                            <c:out value="${ product.getId() }"/>
-	                        </td>
-	                        <td>
-	                            <div id="div-productname-${ product.getId() }">${ product.getName() }</div>
-	                        </td>
-	                        <td>
-	                            <div id="div-productprice-${ product.getId() }">${ product.getMontant() }</div>
-	                        </td>
-	                        <td>
-	                            <div id="div-productdescription-${ product.getId() }">${ product.getDescription() }</div>
-	                        </td>
-	                        <td>
-	                            <div id="div-dimx-${ product.getId() }">${ product.getDimensionX() }</div>
-	                        </td>
-	                        <td>
-	                            <div id="div-dimy-${ product.getId() }">${ product.getDimensionY() }</div>
-	                        </td>
-	                        <td>
-	                            <div id="div-dimz-${ product.getId() }">${ product.getDimensionY() }</div>
-	                        </td>
-	                        <td>
-	                            <a data-id="${ product.getId() }" href="#modal-product" role="button" class="button green edit-product" data-toggle="modal">Edit</a>
-	                            <a data-id="${ product.getId() }" href="#modal-confirm" role="button" class="button red delete-product" data-toggle="modal">Supprimer</a>
-	                        </td>
-	                    </tr>
-                    </c:forEach>
+                    <tr id="tr-product-1">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <div id="div-productname-1">produit 1</div>
+                        </td>
+                        <td>
+                            <div id="div-productprice-1">20</div>
+                        </td>
+                        <td>
+                            <div id="div-productdescription-1">description 1</div>
+                        </td>
+                        <td>
+                            <div id="div-dimx-1">20</div>
+                        </td>
+                        <td>
+                            <div id="div-dimy-1">40</div>
+                        </td>
+                        <td>
+                            <div id="div-dimz-1">20</div>
+                        </td>
+                        <td>
+                            <a data-id="1" href="#modal-product" role="button" class="button green edit-product" data-toggle="modal">Edit</a>
+                            <a data-id="1" href="#modal-confirm" role="button" class="button red delete-product" data-toggle="modal">Supprimer</a>
+                        </td>
+                    </tr>
                 </table>
-                <div data-new-id="6" href="#modal-product" role="button" class="button green add-product" data-toggle="modal">Enregistrer un support</div>
+                <div data-new-id="6" href="#modal-product" role="button" class="button green add-product" data-toggle="modal">Add Product</div>
             </div>
-            
             <div class="tab-pane fade" id="projects">
                 <div class="span9">
                     <h3>Projects List</h3>
@@ -125,18 +190,45 @@
                         <th>Id</th>
                         <th>Nom</th>
                         <th>Description</th>
-                        <th>Artiste_id</th>
+                        <th>Artiste</th>
                         <th>Prix</th>
                         <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr id="tr-project-1">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <div id="div-projectname-1">projet 1</div>
+                        </td>
+                        <td>
+                            <div id="div-projectdescription-1">description 1</div>
+                        </td>
+                        <td>
+                            <div id="div-projectartist-1">jeanclaude dupond</div>
+                        </td>
+                        <td>
+                            <div id="div-projectprice-1">40</div>
+                        </td>
+                        <td>
+                            <div id="div-projectimg-1"><img src=""></div>
+                        </td>
+                        <td>
+                            <a data-id="1" href="#modal-project" role="button" class="button green edit-project" data-toggle="modal">Edit</a>
+                            <a data-id="1" href="#modal-confirm" role="button" class="button red delete-project" data-toggle="modal">Supprimer</a>
+                        </td>
                     </tr>
                 </table>
+                <div data-new-id="6" href="#modal-project" role="button" class="button green add-project" data-toggle="modal">Add Project</div>
             </div>
         </div>
     </div>
-</section>
+</section><!--  end content -->
 
 <%@ include file="../static/modal-confirm.jsp" %>
 <%@ include file="../static/modal-user.jsp" %>
+<%@ include file="../static/modal-customer.jsp" %>
 <%@ include file="../static/modal-product.jsp" %>
 <%@ include file="../static/modal-project.jsp" %>
 

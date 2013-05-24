@@ -37,12 +37,13 @@ public class CustomerDbServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String newUser = request.getParameter("newuser");
+		String newCustomer = request.getParameter("newcustomer");
 		
 		System.out.println("good");
 		
-		if (newUser != null){
-			
+		if (newCustomer != null){
+			System.out.println("dispatch");
+			this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
 		}
 		else
 		{

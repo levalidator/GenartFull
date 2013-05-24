@@ -56,13 +56,11 @@ public class AdminServlet extends HttpServlet {
 				List<Customer> customers = DAOCustomer.GetListCustomer(0);
 				List<Support> supports = DAOSupport.GetListSupport(); 
 				int maxIdArtist = DAOArtist.GetNextId();
-				//int maxIdCustomer = DAOCustomer.GetNextId();
 				
 				request.setAttribute("artists", artists);
 				request.setAttribute("customers", customers);
 				request.setAttribute("products", supports);
 				request.setAttribute("maxIdArtist", maxIdArtist);
-				//request.setAttribute("maxIdCustomer", maxIdCustomer);
 				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
 			}

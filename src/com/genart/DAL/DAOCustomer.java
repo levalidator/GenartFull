@@ -88,12 +88,12 @@ public class DAOCustomer {
 	public static int GetNextId(){
 		try 
 		{	
-			String query = "select max(id customer) as max from Customer";
+			String query = "select max(`id Customer`) as max from Customer";
 			ResultSet results = AccesBDD.getStatement().executeQuery(query);
 			boolean exists = results.first();
 			int maxId; 
 			if (exists){
-				maxId = Integer.parseInt(results.getString("max")) + 1;
+				maxId = Integer.parseInt(results.getString("max"));
 			} else {
 				maxId = 0;
 			}
