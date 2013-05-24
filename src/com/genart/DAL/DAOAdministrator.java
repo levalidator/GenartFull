@@ -5,7 +5,16 @@ import java.sql.ResultSet;
 import com.genart.bdd.AccesBDD;
 import com.genart.beans.Administrator;
 
+/**
+ * DAO for Administrator class
+ * @author The GenArt Team
+ *
+ */
 public class DAOAdministrator {
+	
+	/**
+	 * Get an Administrator by his mail 
+	 */
 	public static Administrator GetAdministratorByMail(String mail){
 		try 
 		{	

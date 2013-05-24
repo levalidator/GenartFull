@@ -41,6 +41,11 @@
                             <li class="dropdown"><a href="./artists">Artistes</a></li>
                             <li><a href="./listing">Galerie</a></li>
                             <li><a href="./contact">Contact</a></li>
+                            <c:choose>
+								<c:when test="${connected}">
+									<li><a href="./contact">Mon compte</a></li>	
+								</c:when>
+							</c:choose>
                             <li class="divider-vertical"></li>
                             <li><a class="button green" href="./cart">Mes oeuvres (<c:out value="${nbOeuvres}" />)</a></li>
                             <li class="divider-vertical"></li>

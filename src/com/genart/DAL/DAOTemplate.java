@@ -7,9 +7,16 @@ import java.util.List;
 
 import com.genart.bdd.AccesBDD;
 import com.genart.beans.Template;
-
+/**
+ * DAO for Artist class
+ * @author The GenArt Team
+ *
+ */
 public class DAOTemplate
 {
+	/**
+	 * Get a template by his id 
+	 */
 	public static Template GetTemplateById(int idTemplate)
 	{
     	Template template = null;
@@ -37,6 +44,9 @@ public class DAOTemplate
 	    return template;
 	}
 	
+	/**
+	 * Returns the templates list 
+	 */
 	public static List<Template> GetListTemplates()
 	{
 		List<Template> lesTemplates = null;
@@ -75,7 +85,10 @@ public class DAOTemplate
 		
 		return lesTemplates;		
 	}
-
+	
+	/**
+	 * Returns a specified number of templates or all templates 
+	 */
 	public static List<Template> getTopTemplates(int limit)
 	{
 		List<Template> topTemplates = null;
@@ -113,6 +126,9 @@ public class DAOTemplate
 		return topTemplates;
 	}
 	
+	/**
+	 * Overlad to return the templates of an artist  
+	 */
 	public static List<Template> getTopTemplates(int idArtist, int limit)
 	{
 		List<Template> topTemplates = null;

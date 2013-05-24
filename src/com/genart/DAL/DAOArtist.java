@@ -7,8 +7,16 @@ import java.util.List;
 import com.genart.bdd.AccesBDD;
 import com.genart.beans.Artist;
 
+/**
+ * DAO for Artist class
+ * @author The GenArt Team
+ *
+ */
 public class DAOArtist
 {
+	/**
+	 * Returns the artists list 
+	 */
 	public static List<Artist> getListArtist(int limit)
 	{
 		List<Artist> listArtists = null;
@@ -43,6 +51,9 @@ public class DAOArtist
 		return listArtists;
 	}
 	
+	/**
+	 * Get an Artist for a template id 
+	 */
 	public static Artist GetArtistFromTemplate(int idTemplate)
 	{
 		Artist artist = null;
@@ -70,6 +81,9 @@ public class DAOArtist
 		return artist;
 	}
 	
+	/**
+	 * Insert an Artist in database
+	 */
 	public static boolean InsertArtist(Artist artist){
 		try{
 			String query = "INSERT INTO Artist (mailArtist, passwordArtist, phoneArtist, websiteArtist, nameArtist, firstNameArtist, descriptionArtist, pathAvatarArtist) " +
@@ -90,6 +104,9 @@ public class DAOArtist
 		}
 	}
 	
+	/**
+	 * Get an Artist by his mail 
+	 */
 	public static Artist GetArtistByMail(String mail){
 		try 
 		{	
@@ -120,6 +137,9 @@ public class DAOArtist
     	}
 	}
 	
+	/**
+	 * Get the max Id in the Artist table 
+	 */
 	public static int GetNextId(){
 		try 
 		{	
@@ -141,6 +161,9 @@ public class DAOArtist
     	}
 	}
 	
+	/**
+	 * Get an Artist by his id 
+	 */
 	public static Artist GetArtist(int id) {
 		try 
 		{	
@@ -171,6 +194,9 @@ public class DAOArtist
     	}
 	}
 	
+	/**
+	 * Update an Artist in database 
+	 */
 	public static boolean UpdateArtist(Artist artist)
 	{
 		try{
@@ -193,6 +219,9 @@ public class DAOArtist
 		}
 	}
 	
+	/**
+	 * Delete an artist 
+	 */
 	public static boolean DeleteArtist(int idArtist)
 	{
 		try {

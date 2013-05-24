@@ -6,8 +6,15 @@ import java.util.List;
 
 import com.genart.bdd.AccesBDD;
 import com.genart.beans.Support;
-
+/**
+ * DAO for Artist class
+ * @author The GenArt Team
+ *
+ */
 public class DAOSupport {
+	/**
+	 * Returns the supports list 
+	 */
 	public static List<Support> GetListSupport()
 	{
 		List<Support> listSupports = null;

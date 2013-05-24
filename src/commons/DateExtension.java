@@ -3,9 +3,16 @@ package commons;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-
+/**
+ * Date Extension class
+ * @author The GenArt Team
+ *
+ */
 public class DateExtension
 {
+	/**
+	 * Return a Date object from a parsed string 
+	 */
 	public static Date toDate(String input)
 	{
 		if(input == null)

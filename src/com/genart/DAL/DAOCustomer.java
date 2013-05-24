@@ -6,8 +6,15 @@ import java.util.List;
 
 import com.genart.bdd.AccesBDD;
 import com.genart.beans.Customer;
-
+/**
+ * DAO for Customer class
+ * @author The GenArt Team
+ *
+ */
 public class DAOCustomer {
+	/**
+	 * Insert a Customer in database 
+	 */
 	public static boolean InsertCustomer(Customer custo){
 		try{
 			String query = "INSERT INTO Customer (mailCustomer, passwordCustomer) VALUES " +
@@ -22,6 +29,9 @@ public class DAOCustomer {
 		}
 	}
 	
+	/**
+	 * Get a Customer by his mail 
+	 */
 	public static Customer GetCustomerByMail(String mail){
 		try{ 
 			String query = "select * from Customer where mailCustomer = '"+mail+"'";
@@ -41,6 +51,9 @@ public class DAOCustomer {
 		}
 	}
 	
+	/**
+	 * Returns the customers list 
+	 */
 	public static List<Customer> GetListCustomer(int limit){
 		List<Customer> listCustomers = null;
 		
@@ -69,6 +82,9 @@ public class DAOCustomer {
 		return listCustomers;
 	}
 	
+	/**
+	 * Get the max idCustomer in the Customer table 
+	 */
 	public static int GetNextId(){
 		try 
 		{	
