@@ -17,7 +17,7 @@ var valid = function()
         
         $.ajax({
             type: 'post',
-            url: '',
+            url: 'http://localhost:8080/GenArt/dbArtist',
             data: {
                 newuser: newuser,
                 id: id,
@@ -89,7 +89,7 @@ var valid = function()
         
         $.ajax({
             type: 'post',
-            url: '',
+            url: 'http://localhost:8080/GenArt/dbCustomer',
             data: {
                 newcustomer: newcustomer,
                 id: id,
@@ -106,7 +106,7 @@ var valid = function()
                     var e = "<tr id='tr-customer-" + id + "'>";
                     e = e + "<td>" + id + "</td>";
                     e = e + "<td><div id='div-mailcustomer-" + id + "'>" + mailCustomer + "</div></td>";
-                    e = e + "<td><div id='div-passwordcustomer-" + id + "'>" + password + "</div></td>";
+                    e = e + "<td><div id='div-passwordcustomer-" + id + "'>**********</div></td>";
                     e = e + "<td>";
                     e = e + "<a data-id=" + id + " href='#modal-customer' role='button' class='button green edit-customer' data-toggle='modal'>Edit</a>";
                     e = e + "<a data-id=" + id + " href='#modal-confirm' role='button' class='button red delete-customer' data-toggle='modal'>Supprimer</a>";
@@ -123,7 +123,7 @@ var valid = function()
                 } else {
                     
                     $('#div-mailcustomer-' + id).text(mailCustomer);
-                    $('#div-passwordcustomer-' + id).text(password);
+                    $('#div-passwordcustomer-' + id).text("**********");
                     
                 }  
                 
@@ -591,7 +591,26 @@ var confirm = function()
 {
     $('#confirm-delete').live('click', function(){
         var c = $(this).attr('data-value');
-        $('#' + c).remove();
+        
+        
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:8080/GenArt/dbArtist',
+            data: {
+                action: "delete",
+                id: "22"
+            },
+            success: function(data){
+               console.log("delete");
+               $('#' + c).remove();
+                
+            }, 
+            error: function(data){
+                
+                alert('err');
+                
+            }
+        });
         
     });
 }

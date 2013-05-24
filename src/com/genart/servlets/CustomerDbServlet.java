@@ -39,10 +39,26 @@ public class CustomerDbServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newCustomer = request.getParameter("newcustomer");
 		
-		System.out.println("good");
-		
 		if (newCustomer != null){
-			System.out.println("dispatch");
+			boolean insert = Boolean.parseBoolean(newCustomer);
+			if (insert)
+			{
+				String mail = request.getParameter("mailCustomer");
+				String password = request.getParameter("password");
+				String md5 = Tools.encryptPassword(password);
+				
+				insertCustomer(1, mail, md5);
+			}
+			else
+			{
+				int id = Integer.parseInt(request.getParameter("id"));
+				String mail = request.getParameter("mailCustomer");
+				String password = request.getParameter("password");
+				String md5 = Tools.encryptPassword(password);
+				
+				updateCustomer(id, mail, md5);
+			}
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
 		}
 		else
@@ -56,6 +72,18 @@ public class CustomerDbServlet extends HttpServlet {
 	
 			this.getServletContext().getRequestDispatcher("/WEB-INF/views/validinscription.jsp").forward(request, response);
 		}
+	}
+	
+	private void insertCustomer(int idCustomer, String mailCustomer, String passwordCustomer)
+	{
+		Customer customer = new Customer(idCustomer, mailCustomer, passwordCustomer);
+		DAOCustomer.InsertCustomer(customer);
+	}
+	
+	private void updateCustomer(int idCustomer, String mailCustomer, String passwordCustomer)
+	{
+		Customer customer = new Customer(idCustomer, mailCustomer, passwordCustomer);
+		DAOCustomer.UpdateCustomer(customer);
 	}
 
 }
