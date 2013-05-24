@@ -23,7 +23,7 @@ public class DAOCustomer {
 	}
 	
 	public static Customer GetCustomerByMail(String mail){
-		try{
+		try{ 
 			String query = "select * from Customer where mailCustomer = '"+mail+"'";
 			ResultSet result = AccesBDD.getStatement().executeQuery(query);
 			boolean exists = result.first();

@@ -19,7 +19,7 @@ public class DAOAdministrator {
 						results.getString("passwordAdministrator"));
 			} else {
 				admin = null;
-			}
+			} 
 			return admin;
     	}
 		catch (Exception e)
