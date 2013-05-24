@@ -44,15 +44,15 @@ public class SaveTempImageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{        
-		BASE64Decoder decoder = new BASE64Decoder(); 
+		//BASE64Decoder decoder = new BASE64Decoder(); 
 		
-		String param = request.getParameter("image").toString().split(",")[1];
+		//String param = request.getParameter("image").toString().split(",")[1];
 		
-	    byte[] imgBytes = decoder.decodeBuffer(param);          
+	    //byte[] imgBytes = decoder.decodeBuffer(param);          
 	    
-	    ByteArrayInputStream stream = new ByteArrayInputStream(imgBytes);
+	    //ByteArrayInputStream stream = new ByteArrayInputStream(imgBytes);
 	    
-	    BufferedImage bufImg = ImageIO.read(stream);  
+	    //BufferedImage bufImg = ImageIO.read(stream);  
 	    
 	    String sessionId = request.getSession().getId();
 
