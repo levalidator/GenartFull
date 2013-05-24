@@ -233,7 +233,7 @@ $('document').ready(function(){
     validatorformart();
     deletecartline();
     
-    $("form#form-art input.button.red.noborder").click(function(){
+    $("#add-oeuvre").click(function(){
     	var canvas = document.getElementsByTagName("canvas");
 //    	if(canvas[0])
     	var img = canvas[0].toDataURL("image/png");
