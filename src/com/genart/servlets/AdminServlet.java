@@ -13,11 +13,10 @@ import javax.servlet.http.HttpSession;
 import com.genart.DAL.DAOArtist;
 import com.genart.DAL.DAOCustomer;
 import com.genart.DAL.DAOSupport;
-import com.genart.DAL.DAOTemplate;
 import com.genart.beans.Artist;
 import com.genart.beans.Customer;
 import com.genart.beans.Support;
-import com.genart.beans.Template;
+
 
 /**
  * Servlet implementation class AdminServlet
@@ -47,7 +46,7 @@ public class AdminServlet extends HttpServlet {
 		String userType = "";
 		if (null != session.getAttribute("userType"))
 			userType = session.getAttribute("userType").toString();
-		
+
 		if (connected)
 		{
 			if (userType.equals("admin"))
@@ -56,11 +55,15 @@ public class AdminServlet extends HttpServlet {
 				List<Customer> customers = DAOCustomer.GetListCustomer(0);
 				List<Support> supports = DAOSupport.GetListSupport(); 
 				int maxIdArtist = DAOArtist.GetNextId();
+				int maxIdCustomer = DAOCustomer.GetNextId();
+				int maxIdSupport = DAOSupport.GetNextId();
 				
 				request.setAttribute("artists", artists);
 				request.setAttribute("customers", customers);
 				request.setAttribute("products", supports);
 				request.setAttribute("maxIdArtist", maxIdArtist);
+				request.setAttribute("maxIdCustomer", maxIdCustomer);
+				request.setAttribute("maxIdSupport", maxIdSupport);
 				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
 			}

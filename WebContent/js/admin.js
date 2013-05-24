@@ -17,7 +17,7 @@ var valid = function()
         
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/GenArt/dbArtist',
+            url: '',
             data: {
                 newuser: newuser,
                 id: id,
@@ -64,6 +64,7 @@ var valid = function()
                     $('#div-password-' + id).text(password);
                     $('#div-phone-' + id).text(phone);
                     $('#div-web-' + id).text(website);
+                    
                 }  
                 
             }, 
@@ -88,7 +89,7 @@ var valid = function()
         
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/GenArt/dbCustomer',
+            url: '',
             data: {
                 newcustomer: newcustomer,
                 id: id,
@@ -141,10 +142,10 @@ var valid = function()
         var id = $(this).attr('data-id');
        
         var cartNumber = $('#numberCart').val();
-        var cartCustomer = $('#clientCart').val();
-                       
+        var cartCustomer = $('#clientCart option:selected').text();
+        var id_customer =  $('#clientCart option:selected').val();
         var newcart = $(this).attr('data-newcart');
-        
+        alert(id_customer);
         $('#valid-cart').attr('data-newcart', "false");
         
         $.ajax({
@@ -154,7 +155,7 @@ var valid = function()
                 newcart: newcart,
                 id: id,
                 cartNumber: cartNumber,
-                cartCustomer: cartCustomer
+                id_customer: id_customer
             },
             success: function(data){
                 
@@ -203,12 +204,7 @@ var valid = function()
         var dimx = $('#dimxProduct').val();
         var dimy = $('#dimyProduct').val();
         var dimz = $('#dimzProduct').val();
-                alert(name);
-                 alert(price); 
-                 alert(description);
-                  alert(dimx);
-                  alert(dimy);
-                   alert(dimz);
+        
         var newproduct = $(this).attr('data-newproduct');
         
         $('#valid-product').attr('data-newproduct', "false");
@@ -277,7 +273,8 @@ var valid = function()
        
         var name = $('#nameProject').val();
         var description = $('#descriptionProject').val();
-        var artiste_id = $('#artistProject').val();
+        var artistename = $('#artistProject option:selected').text();
+        var artiste_id =  $('#artistProject option:selected').val();
         var price = $('#prixProject').val();
         
         var newproject = $(this).attr('data-newproject');
@@ -303,7 +300,7 @@ var valid = function()
                     e = e + "<td>" + id + "</td>";
                     e = e + "<td><div id='div-projectname-" + id + "'>" + name + "</div></td>";
                     e = e + "<td><div id='div-projectdescription-" + id + "'>" + description + "</div></td>";
-                    e = e + "<td><div id='div-projectartist-" + id + "'>" + artiste_id + "</div></td>";
+                    e = e + "<td><div id='div-projectartist-" + id + "'>" + artistename + "</div></td>";
                     e = e + "<td><div id='div-projectprice-" + id + "'>" + price + "</div></td>";
                     e = e + "<td><div id='div-projectimg-" + id + "'>" + '' + "</div></td>";
                     e = e + "<td>";
@@ -323,7 +320,7 @@ var valid = function()
                     
                     $('#div-projectname-' + id).text(name);
                     $('#div-projectdescription-' + id).text(description);
-                    $('#div-projectartist-' + id).text(artiste_id);
+                    $('#div-projectartist-' + id).text(artistename);
                     $('#div-projectprice-' + id).text(price);
                     $('#div-projectimg-' + id).text('');
                 }  
