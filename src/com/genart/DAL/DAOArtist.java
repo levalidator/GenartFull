@@ -140,4 +140,25 @@ public class DAOArtist
     		return 0;
     	}
 	}
+	
+	public static boolean UpdateArtist(Artist artist)
+	{
+		try{
+			String query = "UPDATE Artist SET " 
+						   + "mailArtist = '"+artist.getMail()+"'"
+						   + "passwordArtist = '"+artist.getPassword()+"'"
+						   + "phoneArtist = '"+artist.getPhone()+"'"
+						   + "websiteArtist = '"+artist.getWebSite()+"'"
+						   + "nameArtist = '"+artist.getName()+"'"
+						   + "firstNameArtist = '"+artist.getFirstName()+"'"
+						   + "descriptionArtist = '"+artist.getDescription()+"'"
+						   + "pathAvatarArtist = '"+artist.getPathAvatar()+"'"
+						   + "WHERE idArtist = '"+ artist.getId() +"'";			
+			AccesBDD.getStatement().execute(query);			
+			return true;
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
 }

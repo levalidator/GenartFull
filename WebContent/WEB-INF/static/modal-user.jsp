@@ -55,15 +55,6 @@
                 <span class="help-inline" style="display:none;" id="websiteArtist-message">  </span>
             </div>
         </div>
-         <div id="isArtist-control-group" class="control-group">
-            <label for="isArtist" class="control-label">Artiste ? : </label>
-            <div class="controls">
-                <select id="isArtist">
-                    <option value="0">Non</option>
-                    <option value="1">Oui</option>
-                </select>
-            </div>
-        </div>
     </div>
     <div class="modal-footer">
         <div class="button red" data-dismiss="modal" aria-hidden="true">Annuler</div>

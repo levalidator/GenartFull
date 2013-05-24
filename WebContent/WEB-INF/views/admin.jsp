@@ -17,7 +17,7 @@
         <div class="tab-content">
             <div class="tab-pane fade active in" id="users">
                 <div class="span9">
-                    <h3>Users List</h3>
+                    <h3>Artistes enregistrés</h3>
                 </div>
                 <table id="user-tab" class="table table-striped">
                     <tr>
@@ -28,8 +28,6 @@
                         <th>Password</th>
                         <th>Telephone</th>
                         <th>Site Web</th>
-                        <th>Is Artist</th>
-                        <th>Is Admin</th>
                         <th>Action</th>
                     </tr>
                     <c:forEach items="${ requestScope['artists'] }" var="artist">
@@ -47,30 +45,24 @@
 	                            <div id="div-mail-${ artist.getId() }">${ artist.getMail() }</div>
 	                        </td>
 	                        <td>
-	                            <div id="div-password-${ artist.getId() }">${ artist.getPassword() }</div>
+	                            <div id="div-password-${ artist.getId() }">*****</div>
 	                        </td>
 	                        <td>
 	                            <div id="div-phone-${ artist.getId() }">${ artist.getPhone() }</div>
 	                        </td>
 	                        <td>
-	                            <div id="div-web-${ artist.getId() }">${ artist.getPhone() }</div>
+	                            <div id="div-web-${ artist.getId() }">${ artist.getWebSite() }</div>
 	                        </td>
 	                        <td>
-	                            <div id="div-isartist-${ artist.getId() }">Oui</div>
-	                        </td>
-	                        <td>
-	                            <div id="div-isadmin-${ artist.getId() }">Oui</div>
-	                        </td>
-	                        <td>
-	                            <a data-id="1" href="#modal-user" role="button" class="button green edit-user" data-toggle="modal">Edit</a>
-	                            <a data-id="1" href="#modal-confirm" role="button" class="button red delete-user" data-toggle="modal">Supprimer</a>
+	                            <a data-id="${ artist.getId() }" href="#modal-user" role="button" class="button green edit-user" data-toggle="modal">Edit</a>
+	                            <a data-id="${ artist.getId() }" href="#modal-confirm" role="button" class="button red delete-user" data-toggle="modal">Supprimer</a>
 	                        </td>
 	                    </tr>
                     </c:forEach>
                     
                 </table>
                 
-                <div data-new-id=${ requestScope['maxId'] } href="#modal-user" role="button" class="button green add-user" data-toggle="modal">Add User</div>
+                <div data-new-id=${ requestScope['maxId'] } href="#modal-user" role="button" class="button green add-user" data-toggle="modal">Enregistrer un artiste</div>
             
             </div>
 
