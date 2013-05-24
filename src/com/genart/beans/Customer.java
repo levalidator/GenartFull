@@ -19,5 +19,4 @@ public class Customer {
 	public void setIdCustomer(int _idCustomer) {this._idCustomer = _idCustomer;}
 	public void setMailCustomer(String _mailCustomer) {this._mailCustomer = _mailCustomer;}
 	public void setPasswordCustomer(String _passwordCustomer) {this._passwordCustomer = _passwordCustomer;}
-	
 }
