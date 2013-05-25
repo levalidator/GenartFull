@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import com.genart.DAL.DAOOrder;
 import com.genart.DAL.DAOSupport;
 import com.genart.DAL.DAOTemplate;
+import com.genart.beans.Artist;
+import com.genart.beans.Customer;
 import com.genart.beans.Order;
 import com.genart.beans.OrderLine;
 import com.genart.beans.Sketch;
@@ -158,8 +160,21 @@ public class CartServlet extends HttpServlet {
 				return;
 			}
 			List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
+
 			Order order = new Order();
 			order.setLignes(new ArrayList<OrderLine>());
+			
+			Artist artist = null;
+			Customer customer = null;
+			
+			if((artist = SessionManager.getConnectedArtist(request.getSession())) != null)
+			{
+				order.setIdCustomer(artist.getId());
+			}
+			else if((customer = SessionManager.getConnectedCustomer(request.getSession())) != null)
+			{
+				order.setIdCustomer(customer.getIdCustomer());
+			}
 			
 			for(Sketch sketch : sketchs)
 			{
