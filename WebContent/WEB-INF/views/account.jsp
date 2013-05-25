@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="../static/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <header class="header">
     <section class="container">
@@ -26,11 +27,11 @@
 			                    <strong><c:out value="${order.getIdCommand()}"/></strong>
 			                </td>
 			                <td class="span3 text-center ref">
-			                    <strong><c:out value="${order.getDate()}"/></strong>
+			                    <strong><fmt:formatDate value="${order.getDate()}" pattern="yyyy-MM-dd"/></strong>
 			                </td>
 			                <td class="span3 text-center ref">
 			                    <div class="span2">
-			                        Peuvre X sur tasse MUG
+			                        Vornado Retail sur tasse
 			                    </div>
 			                </td>
 			                <td class="span2">
