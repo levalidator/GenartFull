@@ -15,6 +15,11 @@ import com.sun.istack.internal.Nullable;
 import commons.DateExtension;
 
 public class DAOOrder {
+	/**
+	 * Returns a customer's orders
+	 * @param idCustomer
+	 * @return
+	 */
 	public static List<Order> getListOrder(int idCustomer) {
 		List<Order> result = new ArrayList<Order>();
 
@@ -55,7 +60,13 @@ public class DAOOrder {
 
 		return result.isEmpty() ? null : result;
 	}
+	
 
+	/**
+	 * Adds an order
+	 * @param order
+	 * @return
+	 */
 	public static boolean insertOrder(Order order) {
 		try {
 			String query = "INSERT INTO command(idCustomer, montant, created_at) VALUES("
