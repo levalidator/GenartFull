@@ -185,7 +185,7 @@
             </div>
             <div class="tab-pane fade" id="projects">
                 <div class="span9">
-                    <h3>Projects List</h3>
+                    <h3>Sketchs enregistrés</h3>
                 </div>
                 <table  class="table table-striped">
                     <tr>
@@ -197,32 +197,32 @@
                         <th>Image</th>
                         <th>Actions</th>
                     </tr>
-                    <tr id="tr-project-1" data-id="1">
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            <div id="div-projectname-1">projet 1</div>
-                        </td>
-                        <td>
-                            <div id="div-projectdescription-1">description 1</div>
-                        </td>
-                        <td>
-                            <div id="div-projectartist-1">jeanclaude dupond</div>
-                        </td>
-                        <td>
-                            <div id="div-projectprice-1">40</div>
-                        </td>
-                        <td>
-                            <div id="div-projectimg-1"><img src=""></div>
-                        </td>
-                        <td>
-                            <a data-id="1" href="#modal-project" role="button" class="button green edit-project" data-toggle="modal">Edit</a>
-                            <a data-id="1" href="#modal-confirm" role="button" class="button red delete-project" data-toggle="modal">Supprimer</a>
-                        </td>
-                    </tr>
+                    <c:forEach items="${ requestScope['templates'] }" var="template">
+	                    <tr id="tr-project-${ template.getId() }" data-id="${ template.getId() }">
+	                        <td>
+	                            <c:out value="${ template.getId() }" />
+	                        </td>
+	                        <td>
+	                            <div id="div-projectname-${ template.getId() }">${ template.getName() }</div>
+	                        </td>
+	                        <td>
+	                            <div id="div-projectdescription-${ template.getId() }">${ template.getDescription() }</div>
+	                        </td>
+	                        <td>
+	                            <div id="div-projectartist-${ template.getId() }">${ template.getIdArtist() }</div>
+	                        </td>
+	                        <td>
+	                            <div id="div-projectprice-${ template.getId() }">${ template.getMontant() }</div>
+	                        </td>
+	                        <td>
+	                            <div id="div-projectimg-${ template.getId() }"><img src="${ template.getImage() }" width="75" height="25"></div>
+	                        </td>
+	                        <td>
+	                            <a data-id="${ template.getId() }" href="#modal-confirm" role="button" class="button red delete-project" data-toggle="modal">Supprimer</a>
+	                        </td>
+	                    </tr>
+                    </c:forEach>
                 </table>
-                <div data-new-id="6" href="#modal-project" role="button" class="button green add-project" data-toggle="modal">Add Project</div>
             </div>
         </div>
     </div>

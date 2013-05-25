@@ -627,7 +627,7 @@ var confirm = function()
 
     $('#confirm-delete').live('click', function(){
         var c = $(this).attr('data-value');
-        alert(c);
+
         $.ajax({
             type: 'post',
             url: URL,
@@ -636,7 +636,6 @@ var confirm = function()
                 id: ID
             },
             success: function(data){
-               console.log("delete");
                $('#' + c).remove();
                 
             }, 

@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 import com.genart.DAL.DAOArtist;
 import com.genart.DAL.DAOCustomer;
 import com.genart.DAL.DAOSupport;
+import com.genart.DAL.DAOTemplate;
 import com.genart.beans.Artist;
 import com.genart.beans.Customer;
 import com.genart.beans.Support;
+import com.genart.beans.Template;
 
 
 /**
@@ -54,16 +56,26 @@ public class AdminServlet extends HttpServlet {
 				List<Artist> artists = DAOArtist.getListArtist(0);
 				List<Customer> customers = DAOCustomer.GetListCustomer(0);
 				List<Support> supports = DAOSupport.GetListSupport(); 
+				List<Template> templates = DAOTemplate.GetListTemplates(); 
+				
+				for (Template template : templates)
+				{
+					template.setDescription(template.getDescription().substring(0, 50)+" ...");
+				}
+				
 				int maxIdArtist = DAOArtist.GetNextId();
 				int maxIdCustomer = DAOCustomer.GetNextId();
 				int maxIdSupport = DAOSupport.GetNextId();
+				int maxIdTemplate = DAOTemplate.GetNextId();
 				
 				request.setAttribute("artists", artists);
 				request.setAttribute("customers", customers);
 				request.setAttribute("products", supports);
+				request.setAttribute("templates", templates);
 				request.setAttribute("maxIdArtist", maxIdArtist);
 				request.setAttribute("maxIdCustomer", maxIdCustomer);
 				request.setAttribute("maxIdSupport", maxIdSupport);
+				request.setAttribute("maxIdTemplate", maxIdTemplate);
 				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
 			}

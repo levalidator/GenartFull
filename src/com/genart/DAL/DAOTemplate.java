@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.genart.bdd.AccesBDD;
+import com.genart.beans.Customer;
 import com.genart.beans.Template;
 /**
  * DAO for Artist class
@@ -165,4 +166,46 @@ public class DAOTemplate
 		
 		return topTemplates;
 	}
+	
+	/**
+	 * Get the max idTemplate in the Template table 
+	 */
+	public static int GetNextId(){
+		try 
+		{	
+			String query = "select max(idTemplate) as max from Template";
+			ResultSet results = AccesBDD.getStatement().executeQuery(query);
+			boolean exists = results.first();
+			int maxId; 
+			if (exists){
+				maxId = Integer.parseInt(results.getString("max"));
+			} else {
+				maxId = 0;
+			}
+			return maxId;
+    	}
+		catch (Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    		return 0;
+    	}
+	}
+	
+	/**
+	 * Delete a Template 
+	 */
+	public static boolean DeleteTemplate(int idTemplate)
+	{
+		try {
+			
+			String query = "DELETE from Template where idTemplate = '"+ idTemplate +"'";
+			AccesBDD.getStatement().execute(query);
+			return true;
+		} catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	
 }
