@@ -58,6 +58,7 @@ public class ConnexionServlet extends HttpServlet {
 			if (custo.getPasswordCustomer().equals(md5)) {
 				session.setAttribute("customer", custo);
 				session.setAttribute("connected", true);
+				session.setAttribute("isCustomer", true);
 				param = "connected";
 				request.setAttribute("result", param);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/validconnexion.jsp").forward(request, response);
@@ -73,6 +74,7 @@ public class ConnexionServlet extends HttpServlet {
 			if (artist.getPassword().equals(md5)) {
 				session.setAttribute("artist", artist);
 				session.setAttribute("connected", true);
+				session.setAttribute("isCustomer", false);
 				param = "connected";
 				request.setAttribute("result", param);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/validconnexion.jsp").forward(request, response);
@@ -88,6 +90,7 @@ public class ConnexionServlet extends HttpServlet {
 			if (admin.getPasswordAdministrator().equals(md5)){
 				session.setAttribute("admin", admin);
 				session.setAttribute("connected", true);
+				session.setAttribute("isCustomer", false);
 				session.setAttribute("userType", "admin");
 				param = "connected";
 				request.setAttribute("result", param);
@@ -103,6 +106,7 @@ public class ConnexionServlet extends HttpServlet {
 		if ((null == artist) && (null == custo) && (null == admin)) {
 			param = "error";
 			request.setAttribute("result", param);
+			session.setAttribute("isCustomer", false);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/views/errorconnexion.jsp").forward(request, response);
 		}
 

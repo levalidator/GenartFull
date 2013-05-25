@@ -42,9 +42,12 @@ public class AccountServlet extends HttpServlet {
 			{
 				List<Order> orders = DAOOrder.getListOrder(((Customer)session.getAttribute("customer")).getIdCustomer());
 				request.setAttribute("orders", orders);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/views/account.jsp").forward(request, response);
 			}
-			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/views/account.jsp").forward(request, response);
+			else
+			{
+				response.sendRedirect("");
+			}
 		}
 		else
 		{
