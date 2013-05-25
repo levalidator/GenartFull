@@ -18,80 +18,26 @@
             </tr>
         </thead>
         <tbody class="cart">
-            <tr>
-                <td class="span3 text-center ref">
-                    <strong>46876873</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <strong>06/12/2013</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <div class="span2">
-                        Peuvre X sur tasse MUG
-                    </div>
-                </td>
-                <td class="span2">
-                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Support :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Total :</div> <span class="badge">30€</span></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="span3 text-center ref">
-                    <strong>46876873</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <strong>06/12/2013</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <div class="span2">
-                        Peuvre X sur tasse MUG
-                    </div>
-                </td>
-                <td class="span2">
-                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Support :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Total :</div> <span class="badge">30€</span></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="span3 text-center ref">
-                    <strong>46876873</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <strong>06/12/2013</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <div class="span2">
-                        Peuvre X sur tasse MUG
-                        Peuvre X sur tasse MUG<br>
-                        Peuvre X sur tasse MUG<br>
-                    </div>
-                </td>
-                <td class="span2">
-                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Support :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Total :</div> <span class="badge">30€</span></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="span3 text-center ref">
-                    <strong>46876873</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <strong>06/12/2013</strong>
-                </td>
-                <td class="span3 text-center ref">
-                    <div class="span2">
-                        Peuvre X sur tasse MUG
-                    </div>
-                </td>
-                <td class="span2">
-                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Support :</div> <span class="badge">15€</span></div>
-                    <div class="span2"><div class="span1">Total :</div> <span class="badge">30€</span></div>
-                </td>
-            </tr>
+        	<c:if test="${not empty orders}">			
+	            <tr>
+	                <td class="span3 text-center ref">
+	                    <strong>46876873</strong>
+	                </td>
+	                <td class="span3 text-center ref">
+	                    <strong>06/12/2013</strong>
+	                </td>
+	                <td class="span3 text-center ref">
+	                    <div class="span2">
+	                        Peuvre X sur tasse MUG
+	                    </div>
+	                </td>
+	                <td class="span2">
+	                    <div class="span2"><div class="span1">Oeuvre :</div> <span class="badge">15€</span></div>
+	                    <div class="span2"><div class="span1">Support :</div> <span class="badge">15€</span></div>
+	                    <div class="span2"><div class="span1">Total :</div> <span class="badge">30€</span></div>
+	                </td>
+	            </tr>            
+            </c:if>         
         </tbody>
     </table>
     <!--<table class="table table-bordered table-striped">

@@ -1,12 +1,18 @@
 package com.genart.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.genart.DAL.DAOOrder;
+import com.genart.beans.Customer;
+import com.genart.beans.Order;
 import commons.SessionManager;
 
 /**
@@ -30,6 +36,14 @@ public class AccountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (SessionManager.isConnected(request.getSession()))
 		{
+			HttpSession session = request.getSession();
+			
+			if (session.getAttribute("customer") != null && session.getAttribute("customer").getClass() == (Customer.class))
+			{
+				List<Order> orders = DAOOrder.getListOrder(((Customer)session.getAttribute("customer")).getIdCustomer());
+				request.setAttribute("orders", orders);
+			}
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/views/account.jsp").forward(request, response);
 		}
 		else
