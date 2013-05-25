@@ -3,7 +3,7 @@
 
 <header class="header">
     <section class="container">
-        <h3>Mes oeuvres</h3>
+        <h3>Mes commandes</h3>
     </section>
 </header>
 
@@ -26,7 +26,7 @@
 			                    <strong><c:out value="${order.getIdCommand()}"/></strong>
 			                </td>
 			                <td class="span3 text-center ref">
-			                    <strong><c:out value="${order.getIdCommand()}"/></strong>
+			                    <strong><c:out value="${order.getDate()}"/></strong>
 			                </td>
 			                <td class="span3 text-center ref">
 			                    <div class="span2">
