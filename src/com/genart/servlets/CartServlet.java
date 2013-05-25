@@ -83,7 +83,7 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String action = request.getParameter("action").toString();
-		System.out.println(action);
+		
 		if (action.equals("add"))
 		{
 			int idTemplate = Integer.parseInt(request.getParameter("idTemplate").toString());
@@ -131,10 +131,8 @@ public class CartServlet extends HttpServlet {
 		
 		if (action.equals("delete"))
 		{
-			System.out.println("entrée delte");
 			if (null != request.getParameter("numero"))
 			{
-				System.out.println("id not null");
 				int numSketch = Integer.parseInt(request.getParameter("numero").toString());
 				List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
 				
@@ -146,7 +144,6 @@ public class CartServlet extends HttpServlet {
 							currentSketch = sketch;
 					
 					sketchs.remove(currentSketch);
-					System.out.println("deleted");
 				}
 			}
 			response.sendRedirect("./cart");
@@ -184,9 +181,9 @@ public class CartServlet extends HttpServlet {
 				order.getLignes().add(line);
 			}
 			
-			DAOOrder.insertOrder(order);
+			boolean result = DAOOrder.insertOrder(order);
 			
-			response.sendRedirect("./cart");
+			this.getServletContext().getRequestDispatcher("/WEB-INF/views/confirmCommand.jsp").forward(request, response);
 		}
 	}
 }
