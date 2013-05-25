@@ -235,14 +235,13 @@ $('document').ready(function(){
     
     $("#add-oeuvre").click(function(){
     	var canvas = document.getElementsByTagName("canvas");
-//    	if(canvas[0])
     	var img = canvas[0].toDataURL("image/png");
-    	setTimeout(function(){
-	    	$.ajax({
-	    		type: "POST",
-	    		url: "saveimgtemp",
-	    		data: { image : img },
-	    		success: function(){}
-	    	});}, 4000);
+    	$.ajax({
+    		async: false,
+    		type: "POST",
+    		url: "saveimgtemp",
+    		data: { image : img },
+    		success: function(){}
+    	});
     });
 });

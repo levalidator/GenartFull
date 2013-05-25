@@ -111,8 +111,14 @@ public class CartServlet extends HttpServlet {
 			{
 				sketchs = new ArrayList<Sketch>();
 			}
+			String imageValue = "";
+			Object image = request.getSession().getAttribute(request.getSession().getId() + "_" + numSkecth);
+			if(image != null)
+			{
+				imageValue = image.toString();
+			}
 			//sketchs.add(new Sketch(idSupport, idTemplate, "img/temp/" + request.getSession().getId() + "_" + numSkecth + ".jpg", sketchs.size()));
-			sketchs.add(new Sketch(idSupport, idTemplate, request.getSession().getAttribute(request.getSession().getId() + "_" + numSkecth).toString(), sketchs.size()));
+			sketchs.add(new Sketch(idSupport, idTemplate, imageValue, sketchs.size()));
 			++numSkecth;
 			
 			request.getSession().setAttribute("numSkecth", numSkecth);
