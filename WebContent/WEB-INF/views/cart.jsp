@@ -83,13 +83,12 @@
 							value="${ requestScope['montantTotal'] }" />€</span>
 				</div>
 			</td>
-			<td class="span3"><a class="button red" onclick="$('#validformpanier').click();" href="">Passer au
-					paiement</a>
+			<td class="span3">
+				<a class="button red" onclick="$('#validformpanier').submit();" href="#">Passer au paiement</a>
 			</td>
 			<div style="display:none" >
-			<form method="post" action="./cart">
-						<input type="hidden" name="action" id="action" value="paiement">
-				<input type="submit" value="ok" id="validformpanier" />
+			<form method="post" action="./cart" id="validformpanier" >
+				<input type="hidden" name="action" id="action" value="paiement">
 			</form></div>
 		</tr>
 
