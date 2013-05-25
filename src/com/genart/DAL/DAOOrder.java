@@ -1,14 +1,18 @@
 package com.genart.DAL;
 
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.genart.bdd.AccesBDD;
+import com.genart.beans.Customer;
 import com.genart.beans.Order;
 import com.genart.beans.OrderLine;
+import com.sun.istack.internal.Nullable;
+import commons.DateExtension;
 
 public class DAOOrder {
 	public static List<Order> getListOrder(int idCustomer) {
@@ -18,7 +22,7 @@ public class DAOOrder {
 			String query = "SELECT * FROM command c "
 					+ "LEFT JOIN item i ON i.idCommand = c.idCommand "
 					+ "WHERE c.idCustomer = " + idCustomer
-					+ " ORDER BY c.idCommand";
+					+ "ORDER BY idCommand";
 
 			ResultSet resultset = AccesBDD.getStatement().executeQuery(query);
 
@@ -32,6 +36,7 @@ public class DAOOrder {
 							.getInt("idCommand"));
 					order.setIdCustomer(resultset.getInt("idCustomer"));
 					order.setLignes(new ArrayList<OrderLine>());
+					order.setDate(DateExtension.toDate(resultset.getString("created_at")));
 					result.add(order);
 				}
 
