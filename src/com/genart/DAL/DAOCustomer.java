@@ -107,7 +107,7 @@ public class DAOCustomer {
     	}
 	}
 	/**
-	 * Update an artist
+	 * Update a customer
 	 */
 	public static boolean UpdateCustomer(Customer customer)
 	{
@@ -120,6 +120,24 @@ public class DAOCustomer {
 			AccesBDD.getStatement().execute(query);			
 			return true;
 		} catch (Exception e){
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	/**
+	 * Delete a customer 
+	 */
+	public static boolean DeleteCustomer(int idCustomer)
+	{
+		try {
+			
+			String query = "DELETE from Customer where `id Customer` = '"+ idCustomer +"'";
+			AccesBDD.getStatement().execute(query);			
+			
+			return true;
+		} catch (Exception e)
+		{
 			System.out.println(e.getMessage());
 			return false;
 		}
