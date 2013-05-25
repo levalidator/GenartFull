@@ -12,6 +12,7 @@ import com.genart.beans.Customer;
 import com.genart.beans.Order;
 import com.genart.beans.OrderLine;
 import com.sun.istack.internal.Nullable;
+import commons.DateExtension;
 
 public class DAOOrder {
 	public static List<Order> getListOrder(int idCustomer) {
@@ -35,6 +36,7 @@ public class DAOOrder {
 							.getInt("idCommand"));
 					order.setIdCustomer(resultset.getInt("idCustomer"));
 					order.setLignes(new ArrayList<OrderLine>());
+					order.setDate(DateExtension.toDate(resultset.getString("created_at")));
 					result.add(order);
 				}
 
