@@ -56,7 +56,7 @@ public class DAOSupport {
 			boolean exists = results.first();
 			int maxId; 
 			if (exists){
-				maxId = Integer.parseInt(results.getString("max"));
+				maxId = Integer.parseInt(results.getString("max")) + 1;
 			} else {
 				maxId = 0;
 			}

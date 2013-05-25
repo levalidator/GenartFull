@@ -57,7 +57,7 @@
 	                        </td>
 	                        <td>
 	                            <a data-id="${ artist.getId() }" href="#modal-user" role="button" class="button green edit-user" data-toggle="modal">Edit</a>
-	                            <a data-id="${ artist.getId() }" href="#modal-confirm" role="button" class="button red delete-user" data-toggle="modal">Supprimer</a>
+	                            <a data-id="${ artist.getId() }" href="#modal-confirm" role="button" class="button red delete-user" data-confirm-message="Êtes-vous sûr de vouloir supprimer cet artiste?" data-toggle="modal">Supprimer</a>
 	                        </td>
 	                    </tr>
                     </c:forEach>
@@ -91,7 +91,7 @@
 	                        </td>
 	                        <td>
 	                            <a data-id="${ customer.getIdCustomer() }" href="#modal-customer" role="button" class="button green edit-customer" data-toggle="modal">Edit</a>
-	                            <a data-id="${ customer.getIdCustomer() }" href="#modal-confirm" role="button" class="button red delete-customer" data-toggle="modal">Supprimer</a>
+	                            <a data-id="${ customer.getIdCustomer() }" href="#modal-confirm" role="button" class="button red delete-customer" data-confirm-message="Êtes-vous sûr de vouloir supprimer ce client" data-toggle="modal">Supprimer</a>
 	                        </td>
 	                    </tr>
                     </c:forEach>
@@ -139,7 +139,7 @@
                 <div class="span9">
                     <h3>Supports enregistrés</h3>
                 </div>
-                <table  class="table table-striped">
+                <table id="product-tab" class="table table-striped">
                     <tr>
                         <th>Id</th>
                         <th>Nom</th>
@@ -152,7 +152,7 @@
                         
                     </tr>
                     <c:forEach items="${ requestScope['products'] }" var="product">
-                    <tr id="tr-product-1" data-id="${ product.getId() }">
+                    <tr id="tr-product-${ product.getId() }" data-id="${ product.getId() }">
                         <td>
                             <c:out value="${ product.getId() }"/>
                         </td>
@@ -176,7 +176,7 @@
                         </td>
                         <td>
                             <a data-id="${ product.getId() }" href="#modal-product" role="button" class="button green edit-product" data-toggle="modal">Edit</a>
-                            <a data-id="${ product.getId() }" href="#modal-confirm" role="button" class="button red delete-product" data-toggle="modal">Supprimer</a>
+                            <a data-id="${ product.getId() }" href="#modal-confirm" role="button" class="button red delete-product" data-confirm-message="Êtes-vous sûr de vouloir supprimer ce support?" data-toggle="modal">Supprimer</a>
                         </td>
                     </tr>
                     </c:forEach>
@@ -218,7 +218,7 @@
 	                            <div id="div-projectimg-${ template.getId() }"><img src="${ template.getImage() }" width="75" height="25"></div>
 	                        </td>
 	                        <td>
-	                            <a data-id="${ template.getId() }" href="#modal-confirm" role="button" class="button red delete-project" data-toggle="modal">Supprimer</a>
+	                            <a data-id="${ template.getId() }" href="#modal-confirm" role="button" class="button red delete-project" data-confirm-message="Êtes-vous sûr de vouloir supprimer ce sketch?" data-toggle="modal">Supprimer</a>
 	                        </td>
 	                    </tr>
                     </c:forEach>

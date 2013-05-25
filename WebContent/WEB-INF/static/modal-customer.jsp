@@ -1,7 +1,7 @@
 
 <div id="modal-customer" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         <h3 id="modal-label-customer">Edition du client</h3>
     </div>
     <div class="divider-slice"></div>

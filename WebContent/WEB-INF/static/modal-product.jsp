@@ -1,7 +1,7 @@
 
 <div id="modal-product" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         <h3 id="modal-label-product">Edition du produit</h3>
     </div>
     <div class="divider-slice"></div>

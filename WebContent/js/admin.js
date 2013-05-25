@@ -40,7 +40,7 @@ var valid = function()
                     e = e + "<td><div id='div-nom-" + id + "'>" + name + "</div></td>";
                     e = e + "<td><div id='div-prenom-" + id + "'>" + firstname + "</div></td>";
                     e = e + "<td><div id='div-mail-" + id + "'>" + mailArtist + "</div></td>";
-                    e = e + "<td><div id='div-password-" + id + "'>" + password + "</div></td>";
+                    e = e + "<td><div id='div-password-" + id + "'>**********</div></td>";
                     e = e + "<td><div id='div-phone-" + id + "'>" + phone + "</div></td>";
                     e = e + "<td><div id='div-web-" + id + "'>" + website + "</div></td>";
                     e = e + "<td>";
@@ -145,7 +145,7 @@ var valid = function()
         var cartCustomer = $('#clientCart option:selected').text();
         var id_customer =  $('#clientCart option:selected').val();
         var newcart = $(this).attr('data-newcart');
-        alert(id_customer);
+        
         $('#valid-cart').attr('data-newcart', "false");
         
         $.ajax({
@@ -522,7 +522,7 @@ var add = function()
         $('#dimyProduct').val('');
         $('#dimzProduct').val('');
         
-        $('#modal-label-user').text("Ajout d'un nouvel utilisateur");
+        $('#modal-label-user').text("Ajout d'un nouveau produit");
         
         $('#valid-product').attr('data-newproduct', "true");
         
@@ -554,35 +554,35 @@ var deletefunction = function()
         var elem = $(this);
         var id = elem.attr('data-id');
         $('#confirm-delete').attr('data-value', 'tr-user-' + id);
-        $('#confirm-message').text('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')
+        $('#confirm-message').text($(this).attr("data-confirm-message"));
     });
     
     $('.delete-customer').live('click', function(){
         var elem = $(this);
         var id = elem.attr('data-id');
         $('#confirm-delete').attr('data-value', 'tr-customer-' + id);
-        $('#confirm-message').text('Êtes-vous sûr de vouloir supprimer ce client ?')
+        $('#confirm-message').text($(this).attr("data-confirm-message"));
     });
     
     $('.delete-cart').live('click', function(){
         var elem = $(this);
         var id = elem.attr('data-id');
         $('#confirm-delete').attr('data-value', 'tr-cart-' + id);
-        $('#confirm-message').text('Êtes-vous sûr de vouloir supprimer cette commande ?')
+        $('#confirm-message').text($(this).attr("data-confirm-message"));
     });
     
     $('.delete-product').live('click', function(){
         var elem = $(this);
         var id = elem.attr('data-id');
         $('#confirm-delete').attr('data-value', 'tr-product-' + id);
-        $('#confirm-message').text('Êtes-vous sûr de vouloir supprimer ce produit ?')
+        $('#confirm-message').text($(this).attr("data-confirm-message"));
     });
     
     $('.delete-project').live('click', function(){
         var elem = $(this);
         var id = elem.attr('data-id');
         $('#confirm-delete').attr('data-value', 'tr-project-' + id);
-        $('#confirm-message').text('Êtes-vous sûr de vouloir supprimer ce projet ?')
+        $('#confirm-message').text($(this).attr("data-confirm-message"));
     });
     
 };
