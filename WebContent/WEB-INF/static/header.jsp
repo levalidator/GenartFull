@@ -42,7 +42,7 @@
                             <li><a href="./listing">Galerie</a></li>
                             <li><a href="./contact">Contact</a></li>
                             <c:choose>
-								<c:when test="${connected}">
+								<c:when test="${connected && isCustomer}">
 									<li><a href="./MyAccount">Mon compte</a></li>	
 								</c:when>
 							</c:choose>

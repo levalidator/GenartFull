@@ -156,7 +156,7 @@ public class CartServlet extends HttpServlet {
 		{
 			if(!SessionManager.isConnected(request.getSession()))
 			{
-				response.sendRedirect("./cart");
+				response.sendRedirect("./connexion");
 				return;
 			}
 			List<Sketch> sketchs = (List<Sketch>)request.getSession().getAttribute("sketchs");
