@@ -22,7 +22,7 @@ public class DAOOrder {
 			String query = "SELECT * FROM command c "
 					+ "LEFT JOIN item i ON i.idCommand = c.idCommand "
 					+ "WHERE c.idCustomer = " + idCustomer
-					+ "ORDER BY idCommand";
+					+ " ORDER BY c.idCommand";
 
 			ResultSet resultset = AccesBDD.getStatement().executeQuery(query);
 
