@@ -13,8 +13,8 @@
             <li class="active"><a href="#users" data-toggle="tab">Artistes</a></li>
             <li class=""><a href="#clients" data-toggle="tab">Clients</a></li>
             <li class=""><a href="#carts" data-toggle="tab">Commandes</a></li>
-            <li class=""><a href="#products" data-toggle="tab">Products</a></li>
-            <li class=""><a href="#projects" data-toggle="tab">Process-projects</a></li>
+            <li class=""><a href="#products" data-toggle="tab">Supports</a></li>
+            <li class=""><a href="#projects" data-toggle="tab">Sketchs</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade active in" id="users">
@@ -33,7 +33,7 @@
                         <th>Action</th>
                     </tr>
                     <c:forEach items="${ requestScope['artists'] }" var="artist">
-	                    <tr id="tr-user-${ artist.getId() }">
+	                    <tr id="tr-user-${ artist.getId() }" data-id="${ artist.getId() }">
 	                        <td>
 	                        	<c:out value="${ artist.getId() }"/>
 	                        </td>
@@ -79,7 +79,7 @@
                         <th>Action</th>
                     </tr>
                     <c:forEach items="${ requestScope['customers'] }" var="customer">
-	                    <tr id="tr-customer-${ customer.getIdCustomer() })">
+	                    <tr id="tr-customer-${ customer.getIdCustomer() })" data-id="${ customer.getIdCustomer() }">
 	                        <td>
 	                            <c:out value="${ customer.getIdCustomer() }"/>
 	                        </td>
@@ -112,7 +112,7 @@
                         <th>Client</th>
                         <th>Action</th>
                     </tr>
-                    <tr id="tr-cart-1">
+                    <tr id="tr-cart-1" data-id="1">
                         <td>
                             1
                         </td>
@@ -137,7 +137,7 @@
 
             <div class="tab-pane fade" id="products">
                 <div class="span9">
-                    <h3>Products List</h3>
+                    <h3>Supports enregistrés</h3>
                 </div>
                 <table  class="table table-striped">
                     <tr>
@@ -152,7 +152,7 @@
                         
                     </tr>
                     <c:forEach items="${ requestScope['products'] }" var="product">
-                    <tr id="tr-product-1">
+                    <tr id="tr-product-1" data-id="${ product.getId() }">
                         <td>
                             <c:out value="${ product.getId() }"/>
                         </td>
@@ -181,7 +181,7 @@
                     </tr>
                     </c:forEach>
                 </table>
-                <div data-new-id="${ requestScope['maxIdSupport'] }" href="#modal-product" role="button" class="button green add-product" data-toggle="modal">Add Product</div>
+                <div data-new-id="${ requestScope['maxIdSupport'] }" href="#modal-product" role="button" class="button green add-product" data-toggle="modal">Enregistrer un support</div>
             </div>
             <div class="tab-pane fade" id="projects">
                 <div class="span9">
@@ -197,7 +197,7 @@
                         <th>Image</th>
                         <th>Actions</th>
                     </tr>
-                    <tr id="tr-project-1">
+                    <tr id="tr-project-1" data-id="1">
                         <td>
                             1
                         </td>

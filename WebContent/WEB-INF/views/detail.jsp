@@ -33,7 +33,8 @@
 					<li data-item-id="${ support.getId() }"><figure> <img
 							src="img/products/product-${ support.getId() }.jpg" /> </figure> <span
 						data-value="${ support.getMontant() }" class="badge"> <c:out
-								value="${ support.getMontant() }" />€ </span></li>
+								value="${ support.getMontant() }" />€ </span>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -56,7 +57,7 @@
 			value="${ template.getId() }"> <input type="hidden"
 			name="idSupport" id="idSupport" value="${ support.getId() }">
 		<input type="hidden" name="action" id="action" value="add">
-		<button id="add-oeuvre" class="button red noborder" name="Add">Ajouter
+		<button id="add-oeuvre" class="button red noborder" name="Add" >Ajouter
 			à mes oeuvres</button>
 	</form>
 </div>

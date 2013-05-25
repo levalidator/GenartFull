@@ -2,7 +2,7 @@
 <%@ include file="../static/header.jsp" %>
 <header class="header">
     <section class="container">
-      <h1>Connexion</h1>
+      <h1>Nous contacter</h1>
     </section>
 </header>
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.genart.DAL.DAOArtist;
 import com.genart.DAL.DAOCustomer;
 import com.genart.beans.Customer;
 import commons.Tools;
@@ -38,6 +39,17 @@ public class CustomerDbServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newCustomer = request.getParameter("newcustomer");
+		
+		if (null != request.getParameter("action"))
+		{
+			String action = request.getParameter("action");
+			if (action.equals("delete"));
+			{
+				DAOCustomer.DeleteCustomer(Integer.parseInt(request.getParameter("id")));
+				this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);
+			}
+		}
+		
 		
 		if (newCustomer != null){
 			boolean insert = Boolean.parseBoolean(newCustomer);

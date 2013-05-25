@@ -211,7 +211,7 @@ var valid = function()
         
         $.ajax({
             type: 'post',
-            url: '',
+            url: 'http://localhost:8080/GenArt/dbSupport',
             data: {
                 newproduct: newproduct,
                 id: id,
@@ -589,16 +589,51 @@ var deletefunction = function()
 
 var confirm = function()
 {
+    var URL = null;
+    var ID = null;
+    $('a.button').each(function(){
+        $(this).on('click',function(){
+            var parent = $(this).parents('.tab-pane').first();
+            var type = parent.attr('id');
+            ID = $(this).parents('tr').attr('data-id');
+
+            switch(type){
+                case 'users':
+                    URL = 'http://localhost:8080/GenArt/dbArtist';
+                    //alert(URL);
+                break;
+                case 'clients':
+                    URL = 'http://localhost:8080/GenArt/dbCustomer';
+                    //alert(URL);
+                break;
+                case 'carts':
+                    URL = 'http://localhost:8080/GenArt/dbOrder';
+                    //alert(URL);
+                break;
+                case 'products':
+                    URL = 'http://localhost:8080/GenArt/dbSupport';
+                    //alert(URL);
+                break;
+                case 'projects':
+                    URL = 'http://localhost:8080/GenArt/dbTemplate';
+                    //alert(URL);
+                break;
+
+
+            }
+
+        });
+    });
+
     $('#confirm-delete').live('click', function(){
         var c = $(this).attr('data-value');
-        
-        
+        alert(c);
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/GenArt/dbArtist',
+            url: URL,
             data: {
                 action: "delete",
-                id: "22"
+                id: ID
             },
             success: function(data){
                console.log("delete");

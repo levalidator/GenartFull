@@ -3,24 +3,11 @@
 <%@ include file="../static/header.jsp" %>
   <header class="header">
     <section class="container">
-      <h1>Galerie categorie : All</h1>
+      <h1>Gallerie</h1>
     </section>
   </header>
 
   <section class="content">
-
-    <div class="container">
-      <form class="form-inline pull-right">
-        <label>Categorie : </label>
-        <select>
-          <option>1</option>
-          <option>2</option>
-        </select>
-        <label for="date">Date :</label>
-        <input id="date" type="text" name="date"/>
-        <input class="button red noborder" type="submit" value="Filtrer">
-      </form>
-    </div>
 
     <div class="spacer"></div>
     <section class="container-fluid">
